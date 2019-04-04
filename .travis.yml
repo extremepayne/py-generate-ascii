@@ -4,4 +4,4 @@ python:
  - "3.6"
  - "nightly"
 script:
-  - python main.py
+  - python main.py < \n\n
