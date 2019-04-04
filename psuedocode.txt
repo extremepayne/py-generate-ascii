@@ -1,6 +1,6 @@
 (,/ is supposed to be a checkmark)
 Get a valid image from the user ,/
-Define a nested (2-D) list to hold output with same dimensions as photo
+Define a nested (2-D) list to hold output with same dimensions as image ,/
 For each pixel:
     Determine the brightness of the pixel
     Map that to courier typeface letter brightness
