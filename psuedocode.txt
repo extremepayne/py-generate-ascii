@@ -1,0 +1,12 @@
+Get a valid image from the user
+Convert to grayscale (? Possibly not necessary)
+Define a nested (2-D) list to hold output with same dimensions as photo
+For each pixel:
+    Determine the brightness of the pixel
+    Map that to courier typeface letter brightness
+    Find a letter or character that matches that
+    Add that to the nested list from line 3 at the proper coordinates
+Print out the output
+Tell the user to copy it to something with a Courier font to view
+    the completed ASCII art.
+Wait for the user before exiting.
