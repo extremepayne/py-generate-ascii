@@ -1,6 +1,7 @@
 """Module Docstring."""
 
-SCALE = 108  # This represents the amount of pixels in a courier letter's space
+MIN_VAL = 2
+MAX_VAL = 36
 
 CHAR_DARKNESS = {  # Dictionary with key = letter; value = amount of pixels
     # used.
