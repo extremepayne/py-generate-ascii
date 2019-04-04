@@ -6,7 +6,7 @@
 
 
 ## This is a work in progress
-Be sure to use Courier. You can view text in courier like this on a windows computer:
+Be sure to use Courier. You can view text in courier like this (on a windows computer):
 
 
 ![Win7 Notepad Format->font](images\Notepad1.JPG)
