@@ -40,6 +40,6 @@ Then [make it grayscale](https://onlinejpgtools.com/convert-jpg-to-grayscale), l
 
 ![Small pixelated grayscale image (png)](images/python-pix-small.png)
 
-Finally, with a [transparent background](https://onlinepngtools.com/create-transparent-png):
+Finally, with a [transparent background](https://onlinepngtools.com/create-transparent-png) (you will want to lower the "match similar colors" percentage, I used 2.5%):
 
 ![Transparent background small pixelated grayscale image](images/python-pix-sm-transparent.png)
