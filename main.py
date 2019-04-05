@@ -1,9 +1,10 @@
 """Module Docstring."""
 # pylint: disable=C0103
 
+# Imports
 import os
 import constants
-
+import time
 
 try:
     from PIL import Image
@@ -11,6 +12,10 @@ except ImportError:
     print("You need to install pillow (6.x) for this project to work.")
     print("Do this in you command line: `pip install pillow`")
 
+
+LETTER_SCALE = constants.MAX_VAL - constants.MIN_VAL + 1
+GRAY_SCALE = 255 - 1 + 1
+SCALE = GRAY_SCALE / LETTER_SCALE
 
 user_input = input(
     'Enter the path of your file\n\
@@ -29,9 +34,11 @@ if user_input == "demo":
     print(outpt_list, len(outpt_list))
     for col in range(img.size[0]):
         for row in range(img.size[1]):
-            # print(col, row)
             color = img.getpixel((col, row))
-            # print(color)
+            darkness = color[0] / SCALE  # If the image is grayscale, we can
+            # just assume the red component is represetative of the overall
+            # brightnes of the pixel.
+
 
 elif ".png" in user_input:
     assert os.path.exists(user_input), "I did not find the file at, " + str(
