@@ -3,6 +3,7 @@
 
 # Imports
 import os
+import random
 import constants
 import time
 
@@ -17,6 +18,17 @@ LETTER_SCALE = constants.MAX_VAL - constants.MIN_VAL + 1
 GRAY_SCALE = 255 - 1 + 1
 SCALE = GRAY_SCALE / LETTER_SCALE
 
+CHARS = []
+for i in range(constants.MAX_VAL + 1):
+    CHARS.append([])
+for letter, thickness in constants.CHAR_DARKNESS.items():
+    CHARS[thickness].append(letter)
+i = 0
+for item in CHARS:
+    if len(item) == 0:
+        print(i)
+    i += 1
+
 user_input = input(
     'Enter the path of your file\n\
 (absolute or relative path, type "demo" for a demo)\n'
@@ -29,20 +41,40 @@ if user_input == "demo":
     to_append = []
     for column in range(img.size[0]):
         to_append.append("")
-        # make a list with as many strings as there are columns
+        # make a list with as many strings as there are columns.
     for row in range(img.size[1]):
         outpt_list.append(to_append)
         # Nest that list into a list with as many lists as there are rows.
-    print(outpt_list, len(outpt_list))
     for col in range(img.size[0]):
         for row in range(img.size[1]):
             color = img.getpixel((col, row))
             if color[3] > 0:  # If the pixel isn't transparent:
-                darkness = round(
-                    color[0] / SCALE
+                darkness = (
+                    round(color[0] / SCALE) + 1
                 )  # If the image is grayscale, we can
                 # just assume the red component is represetative of the overall
                 # brightnes of the pixel.
+                if len(CHARS[darkness]) > 0:
+                    char = CHARS[darkness][
+                        random.randint(0, len(CHARS[darkness]) - 1)
+                    ]
+                else:
+                    # Some darknesses aren't covered by
+                    # the avaliable characters
+                    if darkness <= 3:
+                        darkness = 2
+                    elif darkness == 5:
+                        darkness = 4
+                    elif darkness == 10:
+                        darkness = 9
+                    elif darkness == 32:
+                        darkness = 31
+                    else:
+                        darkness = 35
+                    char = CHARS[darkness][
+                        random.randint(0, len(CHARS[darkness]) - 1)
+                    ]
+                # print(char)
 
 
 elif ".png" in user_input:
