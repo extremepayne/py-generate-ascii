@@ -29,15 +29,20 @@ if user_input == "demo":
     to_append = []
     for column in range(img.size[0]):
         to_append.append("")
+        # make a list with as many strings as there are columns
     for row in range(img.size[1]):
         outpt_list.append(to_append)
+        # Nest that list into a list with as many lists as there are rows.
     print(outpt_list, len(outpt_list))
     for col in range(img.size[0]):
         for row in range(img.size[1]):
             color = img.getpixel((col, row))
-            darkness = color[0] / SCALE  # If the image is grayscale, we can
-            # just assume the red component is represetative of the overall
-            # brightnes of the pixel.
+            if color[3] > 0:  # If the pixel isn't transparent:
+                darkness = round(
+                    color[0] / SCALE
+                )  # If the image is grayscale, we can
+                # just assume the red component is represetative of the overall
+                # brightnes of the pixel.
 
 
 elif ".png" in user_input:
