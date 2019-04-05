@@ -3,7 +3,7 @@ Get a valid image from the user ,/
 Define a nested (2-D) list to hold output with same dimensions as image ,/
 For each pixel: ,/
     Determine the brightness of the pixel ,/
-    Map that to courier typeface letter brightness
+    Map that to courier typeface letter brightness ,/
     Find a letter or character that matches that
     Add that to the nested list from line 3 at the proper coordinates
 Print out the output
