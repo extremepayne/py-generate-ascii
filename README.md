@@ -26,7 +26,7 @@ Start with an image like the one below:
 
 Then [make it grayscale](https://onlinejpgtools.com/convert-jpg-to-grayscale), like so:
 
-![grayscale image](images\python.jpg)
+![grayscale image](images/python.jpg)
 
 [Pixelate it](https://pinetools.com/pixelate-effect-image) (here I used 8-wide pixels):
 
