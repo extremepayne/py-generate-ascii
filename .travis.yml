@@ -3,5 +3,7 @@ python:
  - "3.5"
  - "3.6"
  - "nightly"
+install:
+  - pip install pillow
 script:
   - python main.py < tests/test-main.txt
