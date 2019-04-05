@@ -27,6 +27,11 @@ if user_input == "demo":
     for row in range(img.size[1]):
         outpt_list.append(to_append)
     print(outpt_list, len(outpt_list))
+    for col in range(img.size[0]):
+        for row in range(img.size[1]):
+            # print(col, row)
+            color = img.getpixel((col, row))
+            # print(color)
 
 elif ".png" in user_input:
     assert os.path.exists(user_input), "I did not find the file at, " + str(
