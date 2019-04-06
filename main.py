@@ -12,6 +12,8 @@ try:
 except ImportError:
     print("You need to install pillow (6.x) for this project to work.")
     print("Do this in you command line: `pip install pillow`")
+    input("Press enter to continue")
+    quit()
 
 
 LETTER_SCALE = constants.MAX_VAL - constants.MIN_VAL + 1
@@ -37,17 +39,18 @@ user_input = input(
 if user_input == "demo":
     img = Image.open("images\python-pix-sm-transparent.png")
     print(img.format, img.size)
-    outpt_list = []
+    output_list = []
     to_append = []
     for column in range(img.size[0]):
         to_append.append("")
         # make a list with as many strings as there are columns.
     for row in range(img.size[1]):
-        outpt_list.append(to_append)
+        output_list.append(to_append)
         # Nest that list into a list with as many lists as there are rows.
     for col in range(img.size[0]):
         for row in range(img.size[1]):
             color = img.getpixel((col, row))
+            print(color)
             if color[3] > 0:  # If the pixel isn't transparent:
                 darkness = (
                     round(color[0] / SCALE) + 1
@@ -74,7 +77,11 @@ if user_input == "demo":
                     char = CHARS[darkness][
                         random.randint(0, len(CHARS[darkness]) - 1)
                     ]
-                # print(char)
+            elif color[3] == 0:
+                char = " "
+            output_list[row][col] = char
+
+    print(output_list)
 
 
 elif ".png" in user_input:
@@ -85,7 +92,7 @@ elif ".png" in user_input:
     for column in range(img.size[0]):
         to_append.append("")
     for row in range(img.size[1]):
-        outpt_list.append(to_append)
+        output_list.append(to_append)
 
 else:
     print("File must be a png.\n\n\n")
