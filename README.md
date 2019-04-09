@@ -6,11 +6,11 @@
 
 
 ## Overview 
-This repo isd a tool to transform an image into ASCII art. Follow these steps to generate the art:
+This repo is a tool to transform an image into ASCII art. Follow these steps to generate the art:
 1. Choose an image
 2. See the section below "How to create a suitable image" and change the image as shown to make it easier for the generator to generate good art.
 3. Save that changed image as a png.
-4. Run main.py
+4. Run `main.py`
 5. Input the path to your image
 6. Open `output.txt` with notepad or a similar application and follow the steps in the section "Viewing the completed art" to change the font to courier.
 7. Yay! You did it!
@@ -91,4 +91,3 @@ Using the example from above, the following art is generated:
                   ``.'--,^---.'`                  
                                                   
 ```
-
