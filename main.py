@@ -43,7 +43,6 @@ if user_input == "demo":
     for row in range(img.size[1]):
         for col in range(img.size[0]):
             color = img.getpixel((col, row))
-            # print(color)
             if color[3] > 0:  # If the pixel isn't transparent:
                 darkness = (
                     round((255 - color[0]) / SCALE) + 1
@@ -55,9 +54,6 @@ if user_input == "demo":
                         random.randint(0, len(CHARS[darkness]) - 1)
                     ]
                     output_list[row][col] = char
-                    # print(char)
-                    # print(row, col)
-                    # print(output_list[row][col])
                 else:
                     # Some darknesses aren't covered by
                     # the avaliable characters
@@ -75,11 +71,7 @@ if user_input == "demo":
                         random.randint(0, len(CHARS[darkness]) - 1)
                     ]
                     output_list[row][col] = char
-                    # print(char)
-                    # print(row, col)
-                    # print(output_list[row][col])
 
-    # print(output_list)
     print("\n".join(map("".join, output_list)))
 
 
@@ -88,10 +80,41 @@ elif ".png" in user_input:
         user_input
     )
     img = Image.open(user_input)
-    for column in range(img.size[0]):
-        to_append.append("")
+    print(img.format, img.size)
+    output_list = [[" "] * img.size[0] for _ in range(img.size[1])]
     for row in range(img.size[1]):
-        output_list.append(to_append)
+        for col in range(img.size[0]):
+            color = img.getpixel((col, row))
+            if color[3] > 0:  # If the pixel isn't transparent:
+                darkness = (
+                    round((255 - color[0]) / SCALE) + 1
+                )  # If the image is grayscale, we can
+                # just assume the red component is represetative of the overall
+                # brightnes of the pixel.
+                if len(CHARS[darkness]) > 0:
+                    char = CHARS[darkness][
+                        random.randint(0, len(CHARS[darkness]) - 1)
+                    ]
+                    output_list[row][col] = char
+                else:
+                    # Some darknesses aren't covered by
+                    # the avaliable characters
+                    if darkness <= 3:
+                        darkness = 2
+                    elif darkness == 5:
+                        darkness = 4
+                    elif darkness == 10:
+                        darkness = 9
+                    elif darkness == 32:
+                        darkness = 31
+                    else:
+                        darkness = 35
+                    char = CHARS[darkness][
+                        random.randint(0, len(CHARS[darkness]) - 1)
+                    ]
+                    output_list[row][col] = char
+
+    print("\n".join(map("".join, output_list)))
 
 else:
     print("File must be a png.\n\n\n")
