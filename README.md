@@ -36,6 +36,8 @@ Then [make it grayscale](https://onlinejpgtools.com/convert-jpg-to-grayscale), l
 
 ![Small pixelated grayscale image](images/python-pix-small.jpg)
 
+In fact, you may want to change the aspect ratio of the image since courier characters aren't 
+
 [Change it into a png](https://onlinepngtools.com/convert-jpg-to-png):
 
 ![Small pixelated grayscale image (png)](images/python-pix-small.png)
