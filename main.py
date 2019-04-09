@@ -39,21 +39,14 @@ user_input = input(
 if user_input == "demo":
     img = Image.open("images\python-pix-sm-transparent.png")
     print(img.format, img.size)
-    output_list = []
-    to_append = []
-    for column in range(img.size[0]):
-        to_append.append("")
-        # make a list with as many strings as there are columns.
+    output_list = [[" "] * img.size[0] for _ in range(img.size[1])]
     for row in range(img.size[1]):
-        output_list.append(to_append)
-        # Nest that list into a list with as many lists as there are rows.
-    for col in range(img.size[0]):
-        for row in range(img.size[1]):
+        for col in range(img.size[0]):
             color = img.getpixel((col, row))
-            print(color)
+            # print(color)
             if color[3] > 0:  # If the pixel isn't transparent:
                 darkness = (
-                    round(color[0] / SCALE) + 1
+                    round((255 - color[0]) / SCALE) + 1
                 )  # If the image is grayscale, we can
                 # just assume the red component is represetative of the overall
                 # brightnes of the pixel.
@@ -61,6 +54,10 @@ if user_input == "demo":
                     char = CHARS[darkness][
                         random.randint(0, len(CHARS[darkness]) - 1)
                     ]
+                    output_list[row][col] = char
+                    # print(char)
+                    # print(row, col)
+                    # print(output_list[row][col])
                 else:
                     # Some darknesses aren't covered by
                     # the avaliable characters
@@ -77,11 +74,13 @@ if user_input == "demo":
                     char = CHARS[darkness][
                         random.randint(0, len(CHARS[darkness]) - 1)
                     ]
-            elif color[3] == 0:
-                char = " "
-            output_list[row][col] = char
+                    output_list[row][col] = char
+                    # print(char)
+                    # print(row, col)
+                    # print(output_list[row][col])
 
-    print(output_list)
+    # print(output_list)
+    print("\n".join(map("".join, output_list)))
 
 
 elif ".png" in user_input:
