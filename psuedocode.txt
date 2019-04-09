@@ -5,8 +5,9 @@ For each pixel: ,/
     Determine the brightness of the pixel ,/
     Map that to courier typeface letter brightness ,/
     Find a letter or character that matches that ,/
-    Add that to the nested list from line 3 at the proper coordinates
-Print out the output
+    Add that to the nested list from line 3 at the proper coordinates ,/
+Print out the output ,/
+Save output to a file
 Tell the user to copy it to something with a Courier font to view
     the completed ASCII art.
 Wait for the user before exiting.
