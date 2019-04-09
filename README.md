@@ -52,3 +52,43 @@ In fact, you may want to change the aspect ratio of the image since courier char
 Finally, with a [transparent background](https://onlinepngtools.com/create-transparent-png) (you will want to lower the "match similar colors" percentage, I used 2.5%):
 
 ![Transparent background small pixelated grayscale image](images/python-pix-sm-transparent.png)
+
+## Sample output
+Using the example from above, the following art is generated:
+```                                               
+                 `    `D8P$+      `               
+                   `X$qkfc4GXX.                   
+                 `DXt[}v}t[t[IX$                  
+                ` ${  oo23xo3vtX  `               
+                 $Ot  `J%xufoJ7UT                 
+                 D%ju ffCfrfJrtX8                 
+                 8f1}j1j1j1cIul$$                 
+             `2yzDw0TTNNe&1CcC7D8                 
+            DbGGqqG8DUXUU$it[}uXX   `             
+            D?i|i)|iii1)ii+tV9JG8{7{ll1      `    
+           $t)7jl7{zVyVVVVV*9Vr88l..`.}           
+          `di1j}VzaVsVsVVVVVVV3X87`.'`'7          
+          '8;1vxnVs*yV*VVsVsVVvGiv`'.'`]          
+          $5=nzVVnaVV[CII2c2JJJFt`'`.'`}` `       
+          $=raVs**VrCu9595656X8}l`'''.`}l         
+          XJrznyaVcAp888XDGXp9}1`....'`,}         
+          842zVzV2A$7177}177}t```''.`'''}         
+          ;Uvz*VuCUli````````````.``,^.~l         
+         ` q[aszc8wj`'.```'`'^,,/-^,,^.}=         
+           FCuVVrqj]```..:-",^^,,-,^/-.t`     `   
+           Xkc]rrD7[``.,,^^-,,",,^^"--.{          
+            8Du2uD7}`-,^"-",-:^^,^,^,.t=          
+             ]XD887l'/,,.-''''.'.'''-l1           
+                  7l.^/^.}{{7ll}}lll7{            
+                  1l-:,,..''-'..>}    `           
+              `''"l}.:/^/,"~^":'_{-``             
+             `-/<=j}-"":/~^:,  -_{_:-`            
+            `.:>(jc{./^_/::~:  -{v?~,-`           
+            .-~;i{I71---/!::--,[{}|=~-.           
+            `."<=1lOvv7'--'-.}7{]1=<".`           
+             `.^~=(jlr7t}j7}}vti|;_-.`            
+               `'-/>~=?+i+???=_!/-.`              
+                  ``.'--,^---.'`                  
+                                                  
+```
+
