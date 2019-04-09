@@ -4,8 +4,8 @@
 # Imports
 import os
 import random
+import platform
 import constants
-import time
 
 try:
     from PIL import Image
@@ -37,7 +37,11 @@ user_input = input(
 )
 
 if user_input == "demo":
-    img = Image.open("images\python-pix-sm-transparent.png")
+    my_os = platform.system()
+    if my_os == "Windows":
+        img = Image.open("images\python-pix-sm-transparent.png")
+    else:
+        img = Image.open("images/python-pix-sm-transparent.png")
     print(img.format, img.size)
     output_list = [[" "] * img.size[0] for _ in range(img.size[1])]
     for row in range(img.size[1]):
