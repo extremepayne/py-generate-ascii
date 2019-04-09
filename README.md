@@ -1,12 +1,19 @@
 # py-generate-ascii
 
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black) [![Travis CI build](https://travis-ci.org/extremepayne/py-generate-ascii.svg?branch=master)](https://travis-ci.org/extremepayne/py-generate-ascii)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![GitHub top language](https://img.shields.io/github/languages/top/extremepayne/HighScor.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black) [![Travis CI build](https://travis-ci.org/extremepayne/py-generate-ascii.svg?branch=master)](https://travis-ci.org/extremepayne/py-generate-ascii)
 
 > Generates Ascii art from grayscale image
 
 
-## This is a work in progress
-So it dosen't work yet.
+## Overview 
+This repo isd a tool to transform an image into ASCII art. Follow these steps to generate the art:
+1. Choose an image
+2. See the section below "How to create a suitable image" and change the image as shown to make it easier for the generator to generate good art.
+3. Save that changed image as a png.
+4. Run main.py
+5. Input the path to your image
+6. Open `output.txt` with notepad or a similar application and follow the steps in the section "Viewing the completed art" to change the font to courier.
+7. Yay! You did it!
 
 ## Viewing the completed art
 Be sure to use Courier. You can view text in courier like this (on a windows computer):
