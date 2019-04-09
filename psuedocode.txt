@@ -9,5 +9,5 @@ For each pixel: ,/
 Print out the output ,/
 Save output to a file
 Tell the user to copy it to something with a Courier font to view
-    the completed ASCII art.
-Wait for the user before exiting.
+    the completed ASCII art. ,/
+Wait for the user before exiting. ,/

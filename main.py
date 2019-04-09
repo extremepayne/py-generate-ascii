@@ -73,6 +73,7 @@ if user_input == "demo":
                     output_list[row][col] = char
 
     print("\n".join(map("".join, output_list)))
+    print("You must view this in courier for the image to work.")
 
 
 elif ".png" in user_input:
@@ -115,8 +116,14 @@ elif ".png" in user_input:
                     output_list[row][col] = char
 
     print("\n".join(map("".join, output_list)))
+    print("You must view this in courier for the image to work.")
+    file = open("output.txt", "w")
+
+    file.write("\n".join(map("".join, output_list)))
+
+    file.close()
 
 else:
     print("File must be a png.\n\n\n")
 
-print("This is a work in progress.")
+input("Press enter to exit.")
