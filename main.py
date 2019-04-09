@@ -132,6 +132,7 @@ elif ".png" in user_input:
     file.write("\n".join(map("".join, output_list)))
 
     file.close()
+    print("The output has been saved to output.txt")
 
 else:
     print("File must be a png.\n\n\n")
