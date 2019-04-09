@@ -78,6 +78,12 @@ if user_input == "demo":
 
     print("\n".join(map("".join, output_list)))
     print("You must view this in courier for the image to work.")
+    file = open("output.txt", "w")
+
+    file.write("\n".join(map("".join, output_list)))
+
+    file.close()
+    print("The output has been saved to output.txt")
 
 
 elif ".png" in user_input:
