@@ -83,7 +83,6 @@ CHAR_DARKNESS = {  # Dictionary with key = letter; value = amount of pixels
     "}": 16,
     "|": 13,
     ":": 8,
-    '"': 8,
     "<": 9,
     ">": 9,
     "?": 13,

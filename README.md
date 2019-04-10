@@ -1,9 +1,8 @@
 # py-generate-ascii
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![GitHub top language](https://img.shields.io/github/languages/top/extremepayne/HighScor.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black) [![Travis CI build](https://travis-ci.org/extremepayne/py-generate-ascii.svg?branch=master)](https://travis-ci.org/extremepayne/py-generate-ascii)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![GitHub top language](https://img.shields.io/github/languages/top/extremepayne/HighScor.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black) [![Travis CI build](https://travis-ci.org/extremepayne/py-generate-ascii.svg?branch=master)](https://travis-ci.org/extremepayne/py-generate-ascii) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4ed98ec026b84de88b85bfcc99e19449)](https://www.codacy.com/app/extremepayne/py-generate-ascii?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=extremepayne/py-generate-ascii&amp;utm_campaign=Badge_Grade)
 
 > Generates Ascii art from grayscale image
-
 
 ## Overview 
 This repo is a tool to transform an image into ASCII art. Follow these steps to generate the art:
@@ -15,12 +14,6 @@ This repo is a tool to transform an image into ASCII art. Follow these steps to 
 6. Open `output.txt` with notepad or a similar application and follow the steps in the section "Viewing the completed art" to change the font to courier.
 7. Yay! You did it!
 
-## Viewing the completed art
-Be sure to use Courier. You can view text in courier like this (on a windows computer):
-
-
-![Win7 Notepad Format->font](images/Notepad1.JPG)
-![Win7 Notepad change font to Courier](images/Notepad2.JPG)
 
 ## How to create a suitable image
 Any image *should* work, but it's best if you make your image the right size and format first. Below is an example along with links to online tools that do these things, you could probably find similar tools in an advanced photo editor (but I didn't bother because I'm not into advanced photo editing).
@@ -55,7 +48,7 @@ Finally, with a [transparent background](https://onlinepngtools.com/create-trans
 
 ## Sample output
 Using the example from above, the following art is generated:
-```                                               
+```text                                             
                  `    `D8P$+      `               
                    `X$qkfc4GXX.                   
                  `DXt[}v}t[t[IX$                  
@@ -91,3 +84,12 @@ Using the example from above, the following art is generated:
                   ``.'--,^---.'`                  
                                                   
 ```
+
+## Viewing the completed art
+Be sure to use Courier. You can view text in courier like this (on a windows computer):
+
+![Win7 Notepad Format->font](images/Notepad1.JPG)
+![Win7 Notepad change font to Courier](images/Notepad2.JPG)
+
+This is what the above example would look like in Courier: 
+![Output in courier](images\final-product.JPG)
