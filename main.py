@@ -36,9 +36,13 @@ def generate_char(dark):
         # Select a random matching character
         char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
     else:
-        # Some darkes aren't covered by
+        # Some darknesses aren't covered by
         # the avaliable characters
-        if dark <= 3:
+        done = False
+        if dark == 0 or dark == 1:
+            char = " "
+            done = True
+        elif dark == 3 and dark == 2:
             dark = 2
         elif dark == 5:
             dark = 4
@@ -49,14 +53,15 @@ def generate_char(dark):
         else:
             dark = 35
         # Select a random matching character
-        char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
+        if not done:
+            char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
     return char
 
 
 # for item in CHARS:
 # if len(item) == 0:
 # print(i)
-# i += 1 # This prints all darknesses without a matching character.
+# i += 1  # This prints all darknesses without a matching character.
 
 # User inputs the path for the file:
 user_input = input(
@@ -69,9 +74,9 @@ if user_input == "demo":
     # Adjust path based on OS
     my_os = platform.system()
     if my_os == "Windows":
-        img = Image.open("images\python-pix-sm-transparent.png")
+        img = Image.open("images\python-pix-small.jpg")
     else:
-        img = Image.open("images/python-pix-sm-transparent.png")
+        img = Image.open("images/python-pix-small.jpg")
     # Print out some semi-useful info
     print(img.format, img.size)
     # Generate a 2-d list to hold output
@@ -81,7 +86,7 @@ if user_input == "demo":
         for col in range(img.size[0]):
             # grab the color of the current pixel
             color = img.getpixel((col, row))
-            if color[3] > 0:  # If the pixel isn't transparent:
+            if img.format == "JPEG":
                 darkness = (
                     round((255 - color[0]) / SCALE) + 1
                 )  # If the image is grayscale, we can
@@ -89,6 +94,16 @@ if user_input == "demo":
                 # brightnes of the pixel.
                 character = generate_char(darkness)
                 output_list[row][col] = character
+            else:
+                
+                if color[3] > 0:  # If the pixel isn't transparent:
+                    darkness = (
+                        round((255 - color[0]) / SCALE) + 1
+                    )  # If the image is grayscale, we can
+                    # just assume the red component is represetative of the overall
+                    # brightnes of the pixel.
+                    character = generate_char(darkness)
+                    output_list[row][col] = character
 
     # Print the output
     print("\n".join(map("".join, output_list)))
@@ -102,7 +117,7 @@ if user_input == "demo":
     print("The output has been saved to output.txt")
 
 
-elif ".png" in user_input:
+elif (".png" in user_input) or (".jpg" in user_input):
     if os.path.exists(user_input):
         img = Image.open(user_input)
         # Print out some semi-useful info
@@ -114,7 +129,7 @@ elif ".png" in user_input:
             for col in range(img.size[0]):
                 # grab the color of the current pixel
                 color = img.getpixel((col, row))
-                if color[3] > 0:  # If the pixel isn't transparent:
+                if img.format == "JPEG":
                     darkness = (
                         round((255 - color[0]) / SCALE) + 1
                     )  # If the image is grayscale, we can
@@ -122,6 +137,15 @@ elif ".png" in user_input:
                     # brightnes of the pixel.
                     character = generate_char(darkness)
                     output_list[row][col] = character
+                else:
+                    if color[3] > 0:  # If the pixel isn't transparent:
+                        darkness = (
+                            round((255 - color[0]) / SCALE) + 1
+                        )  # If the image is grayscale, we can
+                        # just assume the red component is represetative of the overall
+                        # brightnes of the pixel.
+                        character = generate_char(darkness)
+                        output_list[row][col] = character
 
         # Print the output
         print("\n".join(map("".join, output_list)))
@@ -137,7 +161,7 @@ elif ".png" in user_input:
         print("That path does not exist.")
 
 else:
-    print("File must be a png.\n\n\n")
+    print("File must be a png or jpeg.\n\n\n")
 
 # Wait for user before exiting.
 input("Press enter to exit.")
