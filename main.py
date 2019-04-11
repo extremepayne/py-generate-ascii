@@ -86,7 +86,7 @@ if user_input == "demo":
         for col in range(img.size[0]):
             # grab the color of the current pixel
             color = img.getpixel((col, row))
-            if color[3] > 0:  # If the pixel isn't transparent:
+            if img.format == "JPEG":
                 darkness = (
                     round((255 - color[0]) / SCALE) + 1
                 )  # If the image is grayscale, we can
@@ -94,6 +94,16 @@ if user_input == "demo":
                 # brightnes of the pixel.
                 character = generate_char(darkness)
                 output_list[row][col] = character
+            else:
+                
+                if color[3] > 0:  # If the pixel isn't transparent:
+                    darkness = (
+                        round((255 - color[0]) / SCALE) + 1
+                    )  # If the image is grayscale, we can
+                    # just assume the red component is represetative of the overall
+                    # brightnes of the pixel.
+                    character = generate_char(darkness)
+                    output_list[row][col] = character
 
     # Print the output
     print("\n".join(map("".join, output_list)))
@@ -119,7 +129,7 @@ elif (".png" in user_input) or (".jpg" in user_input):
             for col in range(img.size[0]):
                 # grab the color of the current pixel
                 color = img.getpixel((col, row))
-                if color[3] > 0:  # If the pixel isn't transparent:
+                if img.format == "JPEG":
                     darkness = (
                         round((255 - color[0]) / SCALE) + 1
                     )  # If the image is grayscale, we can
@@ -127,6 +137,15 @@ elif (".png" in user_input) or (".jpg" in user_input):
                     # brightnes of the pixel.
                     character = generate_char(darkness)
                     output_list[row][col] = character
+                else:
+                    if color[3] > 0:  # If the pixel isn't transparent:
+                        darkness = (
+                            round((255 - color[0]) / SCALE) + 1
+                        )  # If the image is grayscale, we can
+                        # just assume the red component is represetative of the overall
+                        # brightnes of the pixel.
+                        character = generate_char(darkness)
+                        output_list[row][col] = character
 
         # Print the output
         print("\n".join(map("".join, output_list)))
