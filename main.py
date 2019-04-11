@@ -38,7 +38,9 @@ def generate_char(dark):
     else:
         # Some darkes aren't covered by
         # the avaliable characters
-        if dark <= 3:
+        if dark == 0:
+            pass
+        elif dark <= 3 and dark >= 1:
             dark = 2
         elif dark == 5:
             dark = 4
@@ -53,10 +55,10 @@ def generate_char(dark):
     return char
 
 
-# for item in CHARS:
-# if len(item) == 0:
-# print(i)
-# i += 1 # This prints all darknesses without a matching character.
+for item in CHARS:
+    if len(item) == 0:
+        print(i)
+        i += 1  # This prints all darknesses without a matching character.
 
 # User inputs the path for the file:
 user_input = input(
