@@ -95,7 +95,6 @@ if user_input == "demo":
                 character = generate_char(darkness)
                 output_list[row][col] = character
             else:
-                
                 if color[3] > 0:  # If the pixel isn't transparent:
                     darkness = (
                         round((255 - color[0]) / SCALE) + 1
