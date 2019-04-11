@@ -4,7 +4,7 @@
 
 > Generates Ascii art from grayscale image
 
-## Overview 
+## Overview
 This repo is a tool to transform an image into ASCII art. Follow these steps to generate the art:
 1. Choose an image
 2. See the section below "How to create a suitable image" and change the image as shown to make it easier for the generator to generate good art.
@@ -82,7 +82,7 @@ Using the example from above, the following art is generated:
              `.^~=(jlr7t}j7}}vti|;_-.`            
                `'-/>~=?+i+???=_!/-.`              
                   ``.'--,^---.'`                  
-                                                  
+
 ```
 
 ## Viewing the completed art
@@ -91,5 +91,5 @@ Be sure to use Courier. You can view text in courier like this (on a windows com
 ![Win7 Notepad Format->font](images/Notepad1.JPG)
 ![Win7 Notepad change font to Courier](images/Notepad2.JPG)
 
-This is what the above example would look like in Courier: 
-![Output in courier](images\final-product.JPG)
+This is what the above example would look like in Courier:
+![Output in courier](images/final-product.JPG)

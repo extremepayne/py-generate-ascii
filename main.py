@@ -30,6 +30,29 @@ for letter, thickness in constants.CHAR_DARKNESS.items():
     CHARS[thickness].append(letter)
 i = 0
 
+
+def generate_char(dark):
+    if len(CHARS[dark]) > 0:
+        # Select a random matching character
+        char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
+    else:
+        # Some darkes aren't covered by
+        # the avaliable characters
+        if dark <= 3:
+            dark = 2
+        elif dark == 5:
+            dark = 4
+        elif dark == 10:
+            dark = 9
+        elif dark == 32:
+            dark = 31
+        else:
+            dark = 35
+        # Select a random matching character
+        char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
+    return char
+
+
 # for item in CHARS:
 # if len(item) == 0:
 # print(i)
@@ -64,30 +87,8 @@ if user_input == "demo":
                 )  # If the image is grayscale, we can
                 # just assume the red component is represetative of the overall
                 # brightnes of the pixel.
-                if len(CHARS[darkness]) > 0:
-                    # Select a random matching character
-                    char = CHARS[darkness][
-                        random.randint(0, len(CHARS[darkness]) - 1)
-                    ]
-                    output_list[row][col] = char
-                else:
-                    # Some darknesses aren't covered by
-                    # the avaliable characters
-                    if darkness <= 3:
-                        darkness = 2
-                    elif darkness == 5:
-                        darkness = 4
-                    elif darkness == 10:
-                        darkness = 9
-                    elif darkness == 32:
-                        darkness = 31
-                    else:
-                        darkness = 35
-                    # Select a random matching character
-                    char = CHARS[darkness][
-                        random.randint(0, len(CHARS[darkness]) - 1)
-                    ]
-                    output_list[row][col] = char
+                character = generate_char(darkness)
+                output_list[row][col] = character
 
     # Print the output
     print("\n".join(map("".join, output_list)))
@@ -121,30 +122,8 @@ elif ".png" in user_input:
                 )  # If the image is grayscale, we can
                 # just assume the red component is represetative of the overall
                 # brightnes of the pixel.
-                if len(CHARS[darkness]) > 0:
-                    # Select a random matching character
-                    char = CHARS[darkness][
-                        random.randint(0, len(CHARS[darkness]) - 1)
-                    ]
-                    output_list[row][col] = char
-                else:
-                    # Some darknesses aren't covered by
-                    # the avaliable characters
-                    if darkness <= 3:
-                        darkness = 2
-                    elif darkness == 5:
-                        darkness = 4
-                    elif darkness == 10:
-                        darkness = 9
-                    elif darkness == 32:
-                        darkness = 31
-                    else:
-                        darkness = 35
-                    # Select a random matching character
-                    char = CHARS[darkness][
-                        random.randint(0, len(CHARS[darkness]) - 1)
-                    ]
-                    output_list[row][col] = char
+                character = generate_char(darkness)
+                output_list[row][col] = character
 
     # Print the output
     print("\n".join(map("".join, output_list)))
