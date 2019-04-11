@@ -103,38 +103,38 @@ if user_input == "demo":
 
 
 elif ".png" in user_input:
-    assert os.path.exists(user_input), "I did not find the file at, " + str(
-        user_input
-    )
-    img = Image.open(user_input)
-    # Print out some semi-useful info
-    print(img.format, img.size)
-    # Generate a 2-d list to hold output
-    output_list = [[" "] * img.size[0] for _ in range(img.size[1])]
-    # Loop through the image by pixels
-    for row in range(img.size[1]):
-        for col in range(img.size[0]):
-            # grab the color of the current pixel
-            color = img.getpixel((col, row))
-            if color[3] > 0:  # If the pixel isn't transparent:
-                darkness = (
-                    round((255 - color[0]) / SCALE) + 1
-                )  # If the image is grayscale, we can
-                # just assume the red component is represetative of the overall
-                # brightnes of the pixel.
-                character = generate_char(darkness)
-                output_list[row][col] = character
+    if os.path.exists(user_input):
+        img = Image.open(user_input)
+        # Print out some semi-useful info
+        print(img.format, img.size)
+        # Generate a 2-d list to hold output
+        output_list = [[" "] * img.size[0] for _ in range(img.size[1])]
+        # Loop through the image by pixels
+        for row in range(img.size[1]):
+            for col in range(img.size[0]):
+                # grab the color of the current pixel
+                color = img.getpixel((col, row))
+                if color[3] > 0:  # If the pixel isn't transparent:
+                    darkness = (
+                        round((255 - color[0]) / SCALE) + 1
+                    )  # If the image is grayscale, we can
+                    # just assume the red component is represetative of the overall
+                    # brightnes of the pixel.
+                    character = generate_char(darkness)
+                    output_list[row][col] = character
 
-    # Print the output
-    print("\n".join(map("".join, output_list)))
-    print("You must view this in courier for the image to work.")
-    # And save it to a file
-    file = open("output.txt", "w")
+        # Print the output
+        print("\n".join(map("".join, output_list)))
+        print("You must view this in courier for the image to work.")
+        # And save it to a file
+        file = open("output.txt", "w")
 
-    file.write("\n".join(map("".join, output_list)))
+        file.write("\n".join(map("".join, output_list)))
 
-    file.close()
-    print("The output has been saved to output.txt")
+        file.close()
+        print("The output has been saved to output.txt")
+    else:
+        print("That path does not exist.")
 
 else:
     print("File must be a png.\n\n\n")

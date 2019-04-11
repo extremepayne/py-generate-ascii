@@ -92,4 +92,5 @@ Be sure to use Courier. You can view text in courier like this (on a windows com
 ![Win7 Notepad change font to Courier](images/Notepad2.JPG)
 
 This is what the above example would look like in Courier:
+
 ![Output in courier](images/final-product.JPG)
