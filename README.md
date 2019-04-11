@@ -16,7 +16,7 @@ This repo is a tool to transform an image into ASCII art. Follow these steps to 
 
 
 ## How to create a suitable image
-Any image *should* work, but it's best if you make your image the right size and format first. Below is an example along with links to online tools that do these things, you could probably find similar tools in an advanced photo editor (but I didn't bother because I'm not into advanced photo editing).
+Any image (png or jpg) *should* work, but it's best if you make your image the right size and format first. Below is an example along with links to online tools that do these things, you could probably find similar tools in an advanced photo editor (but I didn't bother because I'm not into advanced photo editing).
 
 If you have an idea for how to automate these as part of the program, PRs are welcome!
 
@@ -37,14 +37,6 @@ Then [make it grayscale](https://onlinejpgtools.com/convert-jpg-to-grayscale), l
 ![Small pixelated grayscale image](images/python-pix-small.jpg)
 
 In fact, you may want to change the aspect ratio of the image since courier characters aren't square.
-
-[Change it into a png](https://onlinepngtools.com/convert-jpg-to-png):
-
-![Small pixelated grayscale image (png)](images/python-pix-small.png)
-
-Finally, with a [transparent background](https://onlinepngtools.com/create-transparent-png) (you will want to lower the "match similar colors" percentage, I used 2.5%):
-
-![Transparent background small pixelated grayscale image](images/python-pix-sm-transparent.png)
 
 ## Sample output
 Using the example from above, the following art is generated:

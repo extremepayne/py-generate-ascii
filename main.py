@@ -38,9 +38,11 @@ def generate_char(dark):
     else:
         # Some darkes aren't covered by
         # the avaliable characters
-        if dark == 0:
-            pass
-        elif dark <= 3 and dark >= 1:
+        done = False
+        if dark == 0 or dark == 1:
+            char = " "
+            done = True
+        elif dark == 3 and dark == 2:
             dark = 2
         elif dark == 5:
             dark = 4
@@ -51,7 +53,8 @@ def generate_char(dark):
         else:
             dark = 35
         # Select a random matching character
-        char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
+        if not done:
+            char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
     return char
 
 
@@ -71,9 +74,9 @@ if user_input == "demo":
     # Adjust path based on OS
     my_os = platform.system()
     if my_os == "Windows":
-        img = Image.open("images\python-pix-sm-transparent.png")
+        img = Image.open("images\python-pix-small.jpg")
     else:
-        img = Image.open("images/python-pix-sm-transparent.png")
+        img = Image.open("images/python-pix-small.jpg")
     # Print out some semi-useful info
     print(img.format, img.size)
     # Generate a 2-d list to hold output
@@ -104,7 +107,7 @@ if user_input == "demo":
     print("The output has been saved to output.txt")
 
 
-elif ".png" in user_input:
+elif (".png" in user_input) or (".jpg" in user_input):
     if os.path.exists(user_input):
         img = Image.open(user_input)
         # Print out some semi-useful info
