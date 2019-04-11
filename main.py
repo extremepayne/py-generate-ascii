@@ -36,7 +36,7 @@ def generate_char(dark):
         # Select a random matching character
         char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
     else:
-        # Some darkes aren't covered by
+        # Some darknesses aren't covered by
         # the avaliable characters
         done = False
         if dark == 0 or dark == 1:
@@ -58,10 +58,10 @@ def generate_char(dark):
     return char
 
 
-for item in CHARS:
-    if len(item) == 0:
-        print(i)
-        i += 1  # This prints all darknesses without a matching character.
+# for item in CHARS:
+# if len(item) == 0:
+# print(i)
+# i += 1  # This prints all darknesses without a matching character.
 
 # User inputs the path for the file:
 user_input = input(
@@ -142,7 +142,7 @@ elif (".png" in user_input) or (".jpg" in user_input):
         print("That path does not exist.")
 
 else:
-    print("File must be a png.\n\n\n")
+    print("File must be a png or jpeg.\n\n\n")
 
 # Wait for user before exiting.
 input("Press enter to exit.")
