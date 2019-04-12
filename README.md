@@ -14,7 +14,6 @@ This repo is a tool to transform an image into ASCII art. Follow these steps to 
 6. Open `output.txt` with notepad or a similar application and follow the steps in the section "Viewing the completed art" to change the font to courier.
 7. Yay! You did it!
 
-
 ## How to create a suitable image
 Any image (png or jpg) *should* work, but it's best if you make your image the right size and format first. Below is an example along with links to online tools that do these things, you could probably find similar tools in an advanced photo editor (but I didn't bother because I'm not into advanced photo editing).
 
