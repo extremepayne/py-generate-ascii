@@ -18,20 +18,6 @@ except ImportError:
     quit()
 
 
-# Find the scalar variable used to convert from rgb to courier
-LETTER_SCALE = constants.MAX_VAL - constants.MIN_VAL + 1
-GRAY_SCALE = 255 - 1 + 1
-SCALE = GRAY_SCALE / LETTER_SCALE
-
-# Extract the data from constants into a useable form
-CHARS = []
-for i in range(constants.MAX_VAL + 1):
-    CHARS.append([])
-for letter, thickness in constants.CHAR_DARKNESS.items():
-    CHARS[thickness].append(letter)
-i = 0
-
-
 def generate_char(dark):
     """Select a courier character based on a darkness level."""
     if len(CHARS[dark]) > 0:
@@ -61,6 +47,7 @@ def generate_char(dark):
 
 
 def ask(prompt, type_=None, min_=None, max_=None, range_=None):
+    """Get user input of a certain type, with range and min/max options."""
     if min_ is not None and max_ is not None and max_ < min_:
         raise ValueError("min_ must be less than or equal to max_.")
     while True:
@@ -98,6 +85,7 @@ def ask(prompt, type_=None, min_=None, max_=None, range_=None):
             return ui
 
 
+# i = 0
 # for item in CHARS:
 # if len(item) == 0:
 # print(i)
@@ -116,6 +104,22 @@ l - limited (pick only one character for each level of brightness)
 n - non-text (don't pick letters or numbers)
 """
 art_type = ask(question, str.lower, range_=("r", "l", "n"))
+
+# Find the scalar variable used to convert from rgb to courier
+LETTER_SCALE = constants.MAX_VAL - constants.MIN_VAL + 1
+GRAY_SCALE = 255 - 1 + 1
+SCALE = GRAY_SCALE / LETTER_SCALE
+
+# Extract the data from constants into a useable form
+CHARS = []
+for i in range(constants.MAX_VAL + 1):
+    CHARS.append([])
+if art_type in ("r", "l"):
+    for letter, thickness in constants.CHAR_DARKNESS.items():
+        CHARS[thickness].append(letter)
+elif art_type == "n":
+    for letter, thickness in constants.CHAR_DARKNESS_NON_TEXT.items():
+        CHARS[thickness].append(letter)
 
 # Demo using included images:
 if user_input == "demo":
