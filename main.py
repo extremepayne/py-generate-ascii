@@ -5,6 +5,7 @@
 import os
 import random
 import platform
+import statistics
 import constants  # Local; has some variable I didn't want cluttering this file
 
 # PIL used to process images
@@ -32,6 +33,7 @@ i = 0
 
 
 def generate_char(dark):
+    """Select a courier character based on a darkness level."""
     if len(CHARS[dark]) > 0:
         # Select a random matching character
         char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
@@ -86,9 +88,10 @@ if user_input == "demo":
         for col in range(img.size[0]):
             # grab the color of the current pixel
             color = img.getpixel((col, row))
+            gray = statistics.mean((color[0], color[1], color[2]))
             if img.format == "JPEG":
                 darkness = (
-                    round((255 - color[0]) / SCALE) + 1
+                    round((255 - gray) / SCALE) + 1
                 )  # If the image is grayscale, we can
                 # just assume the red component is represetative of the overall
                 # brightnes of the pixel.
@@ -128,9 +131,10 @@ elif (".png" in user_input) or (".jpg" in user_input):
             for col in range(img.size[0]):
                 # grab the color of the current pixel
                 color = img.getpixel((col, row))
+                gray = statistics.mean((color[0], color[1], color[2]))
                 if img.format == "JPEG":
                     darkness = (
-                        round((255 - color[0]) / SCALE) + 1
+                        round((255 - gray) / SCALE) + 1
                     )  # If the image is grayscale, we can
                     # just assume the red component is represetative of the overall
                     # brightnes of the pixel.
