@@ -60,6 +60,44 @@ def generate_char(dark):
     return char
 
 
+def ask(prompt, type_=None, min_=None, max_=None, range_=None):
+    if min_ is not None and max_ is not None and max_ < min_:
+        raise ValueError("min_ must be less than or equal to max_.")
+    while True:
+        ui = input(prompt)
+        if type_ is not None:
+            try:
+                ui = type_(ui)
+            except ValueError:
+                print("Input type must be {0}.".format(type_.__name__))
+                continue
+        if max_ is not None and ui > max_:
+            print("Input must be less than or equal to {0}.".format(max_))
+        elif min_ is not None and ui < min_:
+            print("Input must be greater than or equal to {0}.".format(min_))
+        elif range_ is not None and ui not in range_:
+            if isinstance(range_, range):
+                template = "Input must be between {0.start} and {0.stop}."
+                print(template.format(range_))
+            else:
+                template = "Input must be {0}."
+                if len(range_) == 1:
+                    print(template.format(*range_))
+                else:
+                    print(
+                        template.format(
+                            " or ".join(
+                                (
+                                    ", ".join(map(str, range_[:-1])),
+                                    str(range_[-1]),
+                                )
+                            )
+                        )
+                    )
+        else:
+            return ui
+
+
 # for item in CHARS:
 # if len(item) == 0:
 # print(i)
@@ -70,6 +108,14 @@ user_input = input(
     'Enter the path of your file\n\
 (absolute or relative path, type "demo" for a demo)\n'
 )
+
+question = """
+Pick an option from the list below
+r - regular (pick from full character set)
+l - limited (pick only one character for each level of brightness)
+n - non-text (don't pick letters or numbers)
+"""
+art_type = ask(question, str.lower, range_=("r", "l", "n"))
 
 # Demo using included images:
 if user_input == "demo":
@@ -90,20 +136,12 @@ if user_input == "demo":
             color = img.getpixel((col, row))
             gray = statistics.mean((color[0], color[1], color[2]))
             if img.format == "JPEG":
-                darkness = (
-                    round((255 - gray) / SCALE) + 1
-                )  # If the image is grayscale, we can
-                # just assume the red component is represetative of the overall
-                # brightnes of the pixel.
+                darkness = round((255 - gray) / SCALE) + 1
                 character = generate_char(darkness)
                 output_list[row][col] = character
             else:
                 if color[3] > 0:  # If the pixel isn't transparent:
-                    darkness = (
-                        round((255 - color[0]) / SCALE) + 1
-                    )  # If the image is grayscale, we can
-                    # just assume the red component is represetative of the overall
-                    # brightnes of the pixel.
+                    darkness = round((255 - color[0]) / SCALE) + 1
                     character = generate_char(darkness)
                     output_list[row][col] = character
 
@@ -133,20 +171,12 @@ elif (".png" in user_input) or (".jpg" in user_input):
                 color = img.getpixel((col, row))
                 gray = statistics.mean((color[0], color[1], color[2]))
                 if img.format == "JPEG":
-                    darkness = (
-                        round((255 - gray) / SCALE) + 1
-                    )  # If the image is grayscale, we can
-                    # just assume the red component is represetative of the overall
-                    # brightnes of the pixel.
+                    darkness = round((255 - gray) / SCALE) + 1
                     character = generate_char(darkness)
                     output_list[row][col] = character
                 else:
                     if color[3] > 0:  # If the pixel isn't transparent:
-                        darkness = (
-                            round((255 - color[0]) / SCALE) + 1
-                        )  # If the image is grayscale, we can
-                        # just assume the red component is represetative of the overall
-                        # brightnes of the pixel.
+                        darkness = round((255 - color[0]) / SCALE) + 1
                         character = generate_char(darkness)
                         output_list[row][col] = character
 
