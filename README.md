@@ -21,19 +21,15 @@ If you have an idea for how to automate these as part of the program, PRs are we
 
 Start with an image like the one below:
 
-![full color image](images/python-full-color.jpg)
-
-Then [make it grayscale](https://onlinejpgtools.com/convert-jpg-to-grayscale), like so:
-
-![grayscale image](images/python.jpg)
+![full color image](images/python.jpg)
 
 [Pixelate it](https://pinetools.com/pixelate-effect-image) (here I used 8-wide pixels):
 
-![Pixelated grayscale image](images/python-pixelated.jpg)
+![Pixelated image](images/python-pix.jpg)
 
 [Resize it](https://onlinejpgtools.com/resize-jpg) so the large pixels are now 1 pixel (so this 400 pixel wide image is resized to 50 wide in our case, since we used 8-wide pixels):
 
-![Small pixelated grayscale image](images/python-pix-small.jpg)
+![Small pixelated image](images/python-pix-small.jpg)
 
 In fact, you may want to change the aspect ratio of the image since courier characters aren't square.
 
