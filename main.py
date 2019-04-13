@@ -18,11 +18,14 @@ except ImportError:
     quit()
 
 
-def generate_char(dark):
+def generate_char(dark, mode):
     """Select a courier character based on a darkness level."""
     if len(CHARS[dark]) > 0:
         # Select a random matching character
-        char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
+        if "l" in mode:
+            char = CHARS[dark][0]
+        else:
+            char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
     else:
         # Some darknesses aren't covered by
         # the avaliable characters
@@ -42,7 +45,10 @@ def generate_char(dark):
             dark = 35
         # Select a random matching character
         if not done:
-            char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
+            if "l" in mode:
+                char = CHARS[dark][0]
+            else:
+                char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
     return char
 
 
@@ -98,12 +104,12 @@ user_input = input(
 )
 
 question = """
-Pick an option from the list below
+Pick an option from the list below, or combine options.
 r - regular (pick from full character set)
 l - limited (pick only one character for each level of brightness)
 n - non-text (don't pick letters or numbers)
 """
-art_type = ask(question, str.lower, range_=("r", "l", "n"))
+art_type = ask(question, str.lower, range_=("r", "l", "n", "ln", "nl"))
 
 # Find the scalar variable used to convert from rgb to courier
 LETTER_SCALE = constants.MAX_VAL - constants.MIN_VAL + 1
@@ -114,10 +120,10 @@ SCALE = GRAY_SCALE / LETTER_SCALE
 CHARS = []
 for i in range(constants.MAX_VAL + 1):
     CHARS.append([])
-if art_type in ("r", "l"):
+if "n" not in art_type:
     for letter, thickness in constants.CHAR_DARKNESS.items():
         CHARS[thickness].append(letter)
-elif art_type == "n":
+else:
     for letter, thickness in constants.CHAR_DARKNESS_NON_TEXT.items():
         CHARS[thickness].append(letter)
 
@@ -141,12 +147,12 @@ if user_input == "demo":
             gray = statistics.mean((color[0], color[1], color[2]))
             if img.format == "JPEG":
                 darkness = round((255 - gray) / SCALE) + 1
-                character = generate_char(darkness)
+                character = generate_char(darkness, art_type)
                 output_list[row][col] = character
             else:
                 if color[3] > 0:  # If the pixel isn't transparent:
                     darkness = round((255 - color[0]) / SCALE) + 1
-                    character = generate_char(darkness)
+                    character = generate_char(darkness, art_type)
                     output_list[row][col] = character
 
     # Print the output
@@ -176,12 +182,12 @@ elif (".png" in user_input) or (".jpg" in user_input):
                 gray = statistics.mean((color[0], color[1], color[2]))
                 if img.format == "JPEG":
                     darkness = round((255 - gray) / SCALE) + 1
-                    character = generate_char(darkness)
+                    character = generate_char(darkness, art_type)
                     output_list[row][col] = character
                 else:
                     if color[3] > 0:  # If the pixel isn't transparent:
                         darkness = round((255 - color[0]) / SCALE) + 1
-                        character = generate_char(darkness)
+                        character = generate_char(darkness, art_type)
                         output_list[row][col] = character
 
         # Print the output
