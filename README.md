@@ -11,8 +11,9 @@ This repo is a tool to transform an image into ASCII art. Follow these steps to 
 3. Save that changed image as a png.
 4. Run `main.py`
 5. Input the path to your image
-6. Open `output.txt` with notepad or a similar application and follow the steps in the section "Viewing the completed art" to change the font to courier.
-7. Yay! You did it!
+6. Choose what character set you want the completed art to be in. I prefer the full character set (option "r") but some people think it looks neater with the other options.
+7. Open `output.txt` with notepad or a similar application and follow the steps in the section "Viewing the completed art" to change the font to courier.
+8. Yay! You did it!
 
 ## How to create a suitable image
 Any image (png or jpg) *should* work, but it's best if you make your image the right size and format first. Below is an example along with links to online tools that do these things, you could probably find similar tools in an advanced photo editor (but I didn't bother because I'm not into advanced photo editing).
