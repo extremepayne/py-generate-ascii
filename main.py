@@ -1,4 +1,4 @@
-"""Module Docstring."""
+"""Generate ascii art from image."""
 # pylint: disable=C0103
 
 # Imports
