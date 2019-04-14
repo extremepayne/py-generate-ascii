@@ -24,7 +24,7 @@ Start with an image like the one below:
 
 ![full color image](images/python.jpg)
 
-[Pixelate it](https://pinetools.com/pixelate-effect-image) (here I used 8-wide pixels):
+[Pixelate it](https://onlinejpgtools.com/pixelate-jpg) (here I used 8-wide pixels):
 
 ![Pixelated image](images/python-pix.jpg)
 
