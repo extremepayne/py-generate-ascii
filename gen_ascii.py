@@ -1,14 +1,16 @@
 """Importable; generate ascii art from image."""
 
 
-def generate_char(dark, mode):
+def generate_char(dark, mode, char_set):
     """Select a courier character based on a darkness level."""
-    if len(CHARS[dark]) > 0:
+    import random
+
+    if len(char_set[dark]) > 0:
         # Select a random matching character
         if "l" in mode:
-            char = CHARS[dark][0]
+            char = char_set[dark][0]
         else:
-            char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
+            char = char_set[dark][random.randint(0, len(char_set[dark]) - 1)]
     else:
         # Some darknesses aren't covered by
         # the avaliable characters
@@ -29,9 +31,11 @@ def generate_char(dark, mode):
         # Select a random matching character
         if not done:
             if "l" in mode:
-                char = CHARS[dark][0]
+                char = char_set[dark][0]
             else:
-                char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
+                char = char_set[dark][
+                    random.randint(0, len(char_set[dark]) - 1)
+                ]
     return char
 
 
