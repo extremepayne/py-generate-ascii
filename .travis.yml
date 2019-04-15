@@ -9,4 +9,4 @@ install:
   - pip install pillow
 script:
   - python main.py < tests/test-main.txt
-  - python tests/test-gen_ascii.py
+  - python test-gen_ascii.py
