@@ -11,6 +11,6 @@ install:
   - pip install pillow
 script:
   - python main.py < tests/test-main.txt
-  - coverage run tests/test_gen_ascii.py
+  - coverage run test_gen_ascii.py
 after_success:
   - codecov
