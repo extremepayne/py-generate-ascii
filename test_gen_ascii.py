@@ -9,7 +9,7 @@ for smaller_list in CHARS:
         if character not in smaller_list:
             CHARS[i].append(character)
     i += 1
-print(CHARS)
+
 assert gen_ascii.generate_char(0, "r", CHARS) == " "
 assert gen_ascii.generate_char(3, "r", CHARS) == "`"
 assert gen_ascii.generate_char(21, "r", CHARS) in (
