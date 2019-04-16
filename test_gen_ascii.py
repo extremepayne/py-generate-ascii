@@ -21,3 +21,4 @@ assert gen_ascii.generate_char(21, "r", CHARS) in (
     "*",
 )
 assert gen_ascii.generate_char(5, "l", CHARS) == "'"
+assert gen_ascii.generate_char(10, "r", CHARS) in ("!", "~", "<", ">", "_")
