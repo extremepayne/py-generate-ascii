@@ -5,13 +5,8 @@ python:
  - "3.6"
  - "3.7"
  - "nightly"
-before_install:
-  - pip install pytest pytest-cov
-  - pip install coveralls
 install:
   - pip install pillow
 script:
   - python main.py < tests/test-main.txt
   - py.test
-after_success:
-  - coveralls
