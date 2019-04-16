@@ -123,6 +123,8 @@ for i in range(constants.MAX_VAL + 1):
 if "n" not in art_type:
     for letter, thickness in constants.CHAR_DARKNESS.items():
         CHARS[thickness].append(letter)
+    for letter, thickness in constants.CHAR_DARKNESS_NON_TEXT.items():
+        CHARS[thickness].append(letter)
 else:
     for letter, thickness in constants.CHAR_DARKNESS_NON_TEXT.items():
         CHARS[thickness].append(letter)
