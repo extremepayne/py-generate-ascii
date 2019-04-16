@@ -15,6 +15,10 @@ This repo is a tool to transform an image into ASCII art. Follow these steps to 
 7. Open `output.txt` with notepad or a similar application and follow the steps in the section "Viewing the completed art" to change the font to courier.
 8. Yay! You did it!
 
+## Requirements
+To use this, you must have:
+Python 3.6.x or Python 3.7.x installed. Python 3.5 used to be supported, but I broke the support and can't figure out how to ix it.
+
 ## How to create a suitable image
 Any image (png or jpg) *should* work, but it's best if you make your image the right size and format first. Below is an example along with links to online tools that do these things, you could probably find similar tools in an advanced photo editor (but I didn't bother because I'm not into advanced photo editing).
 
