@@ -11,6 +11,11 @@ This is where you make changes to the project and submit them to review by the r
 
 New to PRs? Follow [this](http://makeapullrequest.com) link.
 
+### Ideas
+Some PRs I would love to see:
+    - Make the Travis build run Windows as well as linux
+    - Fix python 3.5 support (as it hasn't quite reached EOL and I somehow broke support a few commits ago. See [here](https://travis-ci.org/extremepayne/py-generate-ascii/jobs/520915703) for the broken build).
+
 ### Suggestions
 To increase the chances of your PR being accepted, follow these suggestions:
 
