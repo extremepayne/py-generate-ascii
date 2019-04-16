@@ -6,7 +6,11 @@ python:
  - "3.7"
  - "nightly"
 install:
+  - pip install codecov
+  - pip install coverage
   - pip install pillow
 script:
   - python main.py < tests/test-main.txt
-  - py.test
+  - coverage run tests/test_gen_ascii.py
+after_success:
+  - codecov
