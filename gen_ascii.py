@@ -18,7 +18,7 @@ def generate_char(dark, mode, char_set):
         if dark == 0 or dark == 1:
             char = " "
             done = True
-        elif dark == 3 and dark == 2:
+        elif dark == 3 or dark == 2:
             dark = 2
         elif dark == 5:
             dark = 4
@@ -37,6 +37,15 @@ def generate_char(dark, mode, char_set):
                     random.randint(0, len(char_set[dark]) - 1)
                 ]
     return char
+
+
+def get_char_set(char_dict, max_val):
+    char_set = []
+    for i in range(max_val + 1):
+        char_set.append([])
+    for letter, thickness in char_dict.items():
+        char_set[thickness].append(letter)
+    return char_set
 
 
 def create_ascii(image):
