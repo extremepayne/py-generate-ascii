@@ -14,13 +14,13 @@ New to PRs? Follow [this](http://makeapullrequest.com) link.
 ### Suggestions
 To increase the chances of your PR being accepted, follow these suggestions:
 
- - Lint with pylint, pycodestyle, and pydocstyle.
- - Use windows (CR LF) line endings.
+    - Lint with pylint, pycodestyle, and pydocstyle.
+    - Use windows (CR LF) line endings.
 
 ### Requirements
 Your PR will not be accepted if it does not follow these requirements:
 
- - Is both Windows and Linux compatible (I can test this if you can't; macOS compatibility would be nice but isn't required).
- - The Travis build passes.
- - It's formatted with [black](https://github.com/ambv/black).
- - It doesn't expand the scope of the project beyond what I am comfortable managing (I will be the judge of this, if you're unsure just go ahead and submit it anyway).
+    - Is both Windows and Linux compatible (I can test this if you can't; macOS compatibility would be nice but isn't required).
+    - The Travis build passes.
+    - It's formatted with [black](https://github.com/ambv/black).
+    - It doesn't expand the scope of the project beyond what I am comfortable managing (I will be the judge of this, if you're unsure just go ahead and submit it anyway).

@@ -40,9 +40,12 @@ def generate_char(dark, mode, char_set):
 
 
 def get_char_set(char_dict, max_val):
+    """Generate a list of characters from a dictionary."""
     char_set = []
-    for i in range(max_val + 1):
+    i = 0
+    while i < max_val + 1:
         char_set.append([])
+        i += 1
     for letter, thickness in char_dict.items():
         char_set[thickness].append(letter)
     return char_set
