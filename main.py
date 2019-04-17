@@ -110,6 +110,13 @@ l - limited (pick only one character for each level of brightness)
 n - non-text (don't pick letters or numbers)
 """
 art_type = ask(question, str.lower, range_=("r", "l", "n", "ln", "nl"))
+question = """
+Now pick a size:
+1 - largest size
+3 - same size as original (approx)
+5 - smallest size
+"""
+img_size = ask(question, int, 1, 5)
 
 # Find the scalar variable used to convert from rgb to courier
 LETTER_SCALE = constants.MAX_VAL - constants.MIN_VAL + 1
@@ -139,13 +146,13 @@ if user_input == "demo":
     print(img.format, img.size)
     # Generate a 2-d list to hold output
     output_list = [
-        [" "] * (img.size[0] // 3) for _ in range((img.size[1] // 5))
+        [" "] * (img.size[0] // (3 * img_size)) for _ in range((img.size[1] // (5 * img_size)))
     ]
     # Loop through the image by pixels
-    for row in range(img.size[1] // 5):
-        for col in range(img.size[0] // 3):
+    for row in range(img.size[1] // (5 * img_size)):
+        for col in range(img.size[0] // (3 * img_size)):
             # grab the color of the current pixel
-            color = img.getpixel((col * 3, row * 5))
+            color = img.getpixel((col * (3 * img_size), row * (5 * img_size)))
             gray = statistics.mean((color[0], color[1], color[2]))
             if img.format == "JPEG":
                 darkness = round((255 - gray) / SCALE) + 1
