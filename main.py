@@ -132,18 +132,20 @@ if user_input == "demo":
     # Adjust path based on OS
     my_os = platform.system()
     if my_os == "Windows":
-        img = Image.open("images\python-pix-small.jpg")
+        img = Image.open("images\python.jpg")
     else:
-        img = Image.open("images/python-pix-small.jpg")
+        img = Image.open("images/python.jpg")
     # Print out some semi-useful info
     print(img.format, img.size)
     # Generate a 2-d list to hold output
-    output_list = [[" "] * img.size[0] for _ in range(img.size[1])]
+    output_list = [
+        [" "] * (img.size[0] // 3) for _ in range((img.size[1] // 5))
+    ]
     # Loop through the image by pixels
-    for row in range(img.size[1]):
-        for col in range(img.size[0]):
+    for row in range(img.size[1] // 5):
+        for col in range(img.size[0] // 3):
             # grab the color of the current pixel
-            color = img.getpixel((col, row))
+            color = img.getpixel((col * 3, row * 5))
             gray = statistics.mean((color[0], color[1], color[2]))
             if img.format == "JPEG":
                 darkness = round((255 - gray) / SCALE) + 1
