@@ -7,11 +7,10 @@
 ## Overview
 This repo is a tool to transform an image into ASCII art. Follow these steps to generate the art:
 1. Choose an image
-2. See the section below "How to create a suitable image" and change the image as shown to make it easier for the generator to generate good art.
-3. Save that changed image as a png.
-4. Run `main.py`
-5. Input the path to your image
-6. Choose what character set you want the completed art to be in. I prefer the full character set (option "r") but some people think it looks neater with the other options.
+3. Run `main.py`
+4. Input the path to your image
+5. Choose what character set you want the completed art to be in. I prefer the full character set (option "r") but some people think it looks neater with the other options.
+6. Pick the size. 1 results in the largest possible, 3 is 1/3 of the size (in 12 pt. font, approx the same size as original) and 5 is 1/5 the size of 1.
 7. Open `output.txt` with notepad or a similar application and follow the steps in the section "Viewing the completed art" to change the font to courier.
 8. Yay! You did it!
 
@@ -19,27 +18,12 @@ This repo is a tool to transform an image into ASCII art. Follow these steps to 
 To use this, you must have:
 Python 3.6.x or Python 3.7.x installed. Python 3.5 used to be supported, but I broke the support and can't figure out how to ix it.
 
-## How to create a suitable image
-Any image (png or jpg) *should* work, but it's best if you make your image the right size and format first. Below is an example along with links to online tools that do these things, you could probably find similar tools in an advanced photo editor (but I didn't bother because I'm not into advanced photo editing).
-
-If you have an idea for how to automate these as part of the program, PRs are welcome!
-
-Start with an image like the one below:
+## Sample output
+This image is included as a demo.
 
 ![full color image](images/python.jpg)
 
-[Pixelate it](https://onlinejpgtools.com/pixelate-jpg) (here I used 8-wide pixels):
-
-![Pixelated image](images/python-pix.jpg)
-
-[Resize it](https://onlinejpgtools.com/resize-jpg) so the large pixels are now 1 pixel (so this 400 pixel wide image is resized to 50 wide in our case, since we used 8-wide pixels):
-
-![Small pixelated image](images/python-pix-small.jpg)
-
-In fact, you may want to change the aspect ratio of the image since courier characters aren't square.
-
-## Sample output
-Using the example from above, the following art is generated:
+Using the demo example with option "n" and size 1, the following art is generated:
 ```text                                             
                                                                                                                                      
                                                                                                                                      
