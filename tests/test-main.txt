@@ -1,3 +1,4 @@
 demo
 r
-n
+2
+not input, just ending the program
