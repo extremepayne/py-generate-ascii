@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) ![GitHub top language](https://img.shields.io/github/languages/top/extremepayne/HighScor.svg) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) [![Travis CI build](https://travis-ci.org/extremepayne/py-generate-ascii.svg?branch=master)](https://travis-ci.org/extremepayne/py-generate-ascii) [![codecov](https://codecov.io/gh/extremepayne/py-generate-ascii/branch/master/graph/badge.svg)](https://codecov.io/gh/extremepayne/py-generate-ascii) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4ed98ec026b84de88b85bfcc99e19449)](https://www.codacy.com/app/extremepayne/py-generate-ascii?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=extremepayne/py-generate-ascii&amp;utm_campaign=Badge_Grade) [![BADGINATOR](https://badginator.herokuapp.com/extremepayne/py-generate-ascii.svg)](https://github.com/defunctzombie/badginator)
 
-> Generates Ascii art from grayscale image
+> Generates Ascii art from an image
 
 ## Overview
 This repo is a tool to transform an image into ASCII art. Follow these steps to generate the art:
@@ -10,18 +10,18 @@ This repo is a tool to transform an image into ASCII art. Follow these steps to 
 3. Run `main.py`
 4. Input the path to your image
 5. Choose what character set you want the completed art to be in. I prefer the full character set (option "r") but some people think it looks neater with the other options.
-6. Pick the size. 1 results in the largest possible, 3 is 1/3 of the size (in 12 pt. font, approx the same size as original) and 5 is 1/5 the size of 1.
+6. Pick the size. 1 results in the largest possible, 3 is 1/3 of the size (in 12 pt. font, approx. the same size as original) and 5 is 1/5 the size of 1.
 7. Open `output.txt` with notepad or a similar application and follow the steps in the section "Viewing the completed art" to change the font to courier.
 8. Yay! You did it!
 
 ## Requirements
 To use this, you must have:
-Python 3.6.x or Python 3.7.x installed. Python 3.5 used to be supported, but I broke the support and can't figure out how to ix it.
+Python [3.6.x](https://www.python.org/downloads/release/python-368/) or Python [3.7.x](https://www.python.org/downloads/release/python-373/) installed. Python 3.5 used to be supported, but I broke the support and can't figure out how to fix it.
 
 ## Sample output
 This image is included as a demo.
 
-![full color image](images/python.jpg)
+![demo image](images/python.jpg)
 
 Using the demo example with option "n" and size 1, the following art is generated:
 ```text                                             
