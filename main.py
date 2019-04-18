@@ -7,6 +7,7 @@ import random
 import platform
 import statistics
 import constants  # Local; has some variable I didn't want cluttering this file
+import gen_ascii
 
 # PIL used to process images
 try:
@@ -16,40 +17,6 @@ except ImportError:
     print("Do this in you command line: `pip install pillow`")
     input("Press enter to continue")
     quit()
-
-
-def generate_char(dark, mode):
-    """Select a courier character based on a darkness level."""
-    if len(CHARS[dark]) > 0:
-        # Select a random matching character
-        if "l" in mode:
-            char = CHARS[dark][0]
-        else:
-            char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
-    else:
-        # Some darknesses aren't covered by
-        # the avaliable characters
-        done = False
-        if dark == 0 or dark == 1:
-            char = " "
-            done = True
-        elif dark == 3 and dark == 2:
-            dark = 2
-        elif dark == 5:
-            dark = 4
-        elif dark == 10:
-            dark = 9
-        elif dark == 32:
-            dark = 31
-        else:
-            dark = 35
-        # Select a random matching character
-        if not done:
-            if "l" in mode:
-                char = CHARS[dark][0]
-            else:
-                char = CHARS[dark][random.randint(0, len(CHARS[dark]) - 1)]
-    return char
 
 
 def ask(prompt, type_=None, min_=None, max_=None, range_=None):
@@ -91,12 +58,6 @@ def ask(prompt, type_=None, min_=None, max_=None, range_=None):
             return ui
 
 
-# i = 0
-# for item in CHARS:
-# if len(item) == 0:
-# print(i)
-# i += 1  # This prints all darknesses without a matching character.
-
 # User inputs the path for the file:
 user_input = input(
     'Enter the path of your file\n\
@@ -133,6 +94,11 @@ if "n" not in art_type:
 for letter, thickness in constants.CHAR_DARKNESS_NON_TEXT.items():
     CHARS[thickness].append(letter)
 
+# i = 0
+# for item in CHARS:
+#    if len(item) == 0:
+#        print(i)
+#    i += 1  # This prints all darknesses without a matching character.
 
 # Demo using included images:
 if user_input == "demo":
@@ -146,7 +112,8 @@ if user_input == "demo":
     print(img.format, img.size)
     # Generate a 2-d list to hold output
     output_list = [
-        [" "] * (img.size[0] // (3 * img_size)) for _ in range((img.size[1] // (5 * img_size)))
+        [" "] * (img.size[0] // (3 * img_size))
+        for _ in range((img.size[1] // (5 * img_size)))
     ]
     # Loop through the image by pixels
     for row in range(img.size[1] // (5 * img_size)):
@@ -156,12 +123,14 @@ if user_input == "demo":
             gray = statistics.mean((color[0], color[1], color[2]))
             if img.format == "JPEG":
                 darkness = round((255 - gray) / SCALE) + 1
-                character = generate_char(darkness, art_type)
+                character = gen_ascii.generate_char(darkness, art_type, CHARS)
                 output_list[row][col] = character
             else:
                 if color[3] > 0:  # If the pixel isn't transparent:
                     darkness = round((255 - color[0]) / SCALE) + 1
-                    character = generate_char(darkness, art_type)
+                    character = gen_ascii.generate_char(
+                        darkness, art_type, CHARS
+                    )
                     output_list[row][col] = character
 
     # Print the output
@@ -182,21 +151,30 @@ elif (".png" in user_input) or (".jpg" in user_input):
         # Print out some semi-useful info
         print(img.format, img.size)
         # Generate a 2-d list to hold output
-        output_list = [[" "] * img.size[0] for _ in range(img.size[1])]
+        output_list = [
+            [" "] * (img.size[0] // (3 * img_size))
+            for _ in range((img.size[1] // (5 * img_size)))
+        ]
         # Loop through the image by pixels
-        for row in range(img.size[1]):
-            for col in range(img.size[0]):
+        for row in range(img.size[1] // (5 * img_size)):
+            for col in range(img.size[0] // (3 * img_size)):
                 # grab the color of the current pixel
-                color = img.getpixel((col, row))
+                color = img.getpixel(
+                    (col * (3 * img_size), row * (5 * img_size))
+                )
                 gray = statistics.mean((color[0], color[1], color[2]))
                 if img.format == "JPEG":
                     darkness = round((255 - gray) / SCALE) + 1
-                    character = generate_char(darkness, art_type)
+                    character = gen_ascii.generate_char(
+                        darkness, art_type, CHARS
+                    )
                     output_list[row][col] = character
                 else:
                     if color[3] > 0:  # If the pixel isn't transparent:
                         darkness = round((255 - color[0]) / SCALE) + 1
-                        character = generate_char(darkness, art_type)
+                        character = gen_ascii.generate_char(
+                            darkness, art_type, CHARS
+                        )
                         output_list[row][col] = character
 
         # Print the output
