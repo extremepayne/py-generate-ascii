@@ -50,9 +50,29 @@ def get_char_set(char_dict, max_val):
     return char_set
 
 
-def create_ascii(image):
+def create_ascii(image, char_set, mode, size, scale):
     """
     Make an image into ascii art.
     Input: image (must be PIL Image object)
     Output: ascii (2-D list)
     """
+    import statistics
+
+    output_list = [
+        [" "] * (image.size[0] // (3 * size))
+        for _ in range((image.size[1] // (5 * size)))
+    ]
+    for row in range(image.size[1] // (5 * size)):
+        for col in range(image.size[0] // (3 * size)):
+            color = image.getpixel((col * (3 * size), row * (5 * size)))
+            gray = statistics.mean((color[0], color[1], color[2]))
+            if image.format == "JPEG":
+                darkness = round((255 - gray) / scale) + 1
+                character = generate_char(darkness, mode, char_set)
+                output_list[row][col] = character
+            else:
+                if color[3] > 0:  # If the pixel isn't transparent:
+                    darkness = round((255 - gray) / scale) + 1
+                    character = generate_char(darkness, mode, char_set)
+                    output_list[row][col] = character
+    return output_list

@@ -109,36 +109,15 @@ if user_input == "demo":
         img = Image.open("images/python.jpg")
     # Print out some semi-useful info
     print(img.format, img.size)
-    # Generate a 2-d list to hold output
-    output_list = [
-        [" "] * (img.size[0] // (3 * img_size))
-        for _ in range((img.size[1] // (5 * img_size)))
-    ]
-    # Loop through the image by pixels
-    for row in range(img.size[1] // (5 * img_size)):
-        for col in range(img.size[0] // (3 * img_size)):
-            # grab the color of the current pixel
-            color = img.getpixel((col * (3 * img_size), row * (5 * img_size)))
-            gray = statistics.mean((color[0], color[1], color[2]))
-            if img.format == "JPEG":
-                darkness = round((255 - gray) / SCALE) + 1
-                character = gen_ascii.generate_char(darkness, art_type, CHARS)
-                output_list[row][col] = character
-            else:
-                if color[3] > 0:  # If the pixel isn't transparent:
-                    darkness = round((255 - color[0]) / SCALE) + 1
-                    character = gen_ascii.generate_char(
-                        darkness, art_type, CHARS
-                    )
-                    output_list[row][col] = character
+    output = gen_ascii.create_ascii(img, CHARS, art_type, img_size, SCALE)
 
     # Print the output
-    print("\n".join(map("".join, output_list)))
+    print("\n".join(map("".join, output)))
     print("You must view this in courier for the image to work.")
     # And save it to a file
     file = open("output.txt", "w")
 
-    file.write("\n".join(map("".join, output_list)))
+    file.write("\n".join(map("".join, output)))
 
     file.close()
     print("The output has been saved to output.txt")
