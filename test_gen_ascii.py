@@ -15,8 +15,6 @@ for smaller_list in CHARS:
     i += 1
 
 assert gen_ascii.generate_char(0, "r", CHARS) == " "
-assert gen_ascii.generate_char(3, "r", CHARS) == "`"
-assert gen_ascii.generate_char(3, "l", CHARS) == "`"
 assert gen_ascii.generate_char(21, "r", CHARS) in (
     "a",
     "n",
@@ -25,7 +23,5 @@ assert gen_ascii.generate_char(21, "r", CHARS) in (
     "z",
     "*",
 )
-assert gen_ascii.generate_char(5, "l", CHARS) == "'"
-assert gen_ascii.generate_char(10, "r", CHARS) in ("!", "~", "<", ">", "_")
 assert gen_ascii.generate_char(32, "l", CHARS) == "H"
 assert gen_ascii.generate_char(34, "l", CHARS) == "@"
