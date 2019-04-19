@@ -23,5 +23,7 @@ assert gen_ascii.generate_char(21, "r", CHARS) in (
     "z",
     "*",
 )
+assert gen_ascii.generate_char(21, "l", CHARS) == "a"
+assert gen_ascii.generate_char(3, "r", CHARS) == "'"
 assert gen_ascii.generate_char(32, "l", CHARS) == "H"
 assert gen_ascii.generate_char(34, "l", CHARS) == "@"
