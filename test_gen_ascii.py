@@ -37,6 +37,9 @@ assert gen_ascii.generate_char(34, "l", CHARS) == "@"
 my_os = platform.system()
 if my_os == "Windows":
     img = Image.open("images\python.jpg")
+    img2 = Image.open("images\python.png")
 else:
     img = Image.open("images/python.jpg")
+    img2 = Image.open("images/python.png")
 print(gen_ascii.create_ascii(img, CHARS, "l", 4, SCALE))
+print(gen_ascii.create_ascii(img2, CHARS, "l", 3, SCALE))
