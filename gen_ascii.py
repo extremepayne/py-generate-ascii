@@ -14,28 +14,27 @@ def generate_char(dark, mode, char_set):
     else:
         # Some darknesses aren't covered by
         # the avaliable characters
-        done = False
-        if dark == 0 or dark == 1:
+        if dark in (0, 1):
             char = " "
-            done = True
-        elif dark == 3 or dark == 2:
-            dark = 2
-        elif dark == 5:
-            dark = 4
-        elif dark == 10:
-            dark = 9
-        elif dark == 32:
-            dark = 31
+            return char
         else:
-            dark = 35
+            i = 1
+            done = False
+            while not done:
+                if len(char_set[dark + i]) > 0:
+                    new_dark = dark + i
+                    done = True
+                elif len(char_set[dark - i]) > 0:
+                    new_dark = dark - i
+                    done = True
+                i += 1
         # Select a random matching character
-        if not done:
-            if "l" in mode:
-                char = char_set[dark][0]
-            else:
-                char = char_set[dark][
-                    random.randint(0, len(char_set[dark]) - 1)
-                ]
+        if "l" in mode:
+            char = char_set[new_dark][0]
+        else:
+            char = char_set[new_dark][
+                random.randint(0, len(char_set[new_dark]) - 1)
+            ]
     return char
 
 

@@ -3,7 +3,6 @@
 
 # Imports
 import os
-import random
 import platform
 import statistics
 import constants  # Local; has some variable I didn't want cluttering this file
