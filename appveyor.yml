@@ -14,7 +14,7 @@ install:
   - "%PYTHON%/Scripts/pip.exe install coverage"
   - "%PYTHON%/Scripts/pip.exe install codecov"
   - "python -m pip install --upgrade pip"
-  - "%CMD_IN_ENV% setx path "%path%;c:\python\scripts"
+  - "%CMD_IN_ENV% setx path %path%;c:\\python\\scripts"
 build_script:
   - "%CMD_IN_ENV% python main.py < tests/test-main.txt"
   - "%CMD_IN_ENV% coverage run test_gen_ascii.py"
