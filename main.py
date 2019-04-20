@@ -4,7 +4,6 @@
 # Imports
 import os
 import platform
-import statistics
 import constants  # Local; has some variable I didn't want cluttering this file
 import gen_ascii
 
@@ -79,18 +78,23 @@ Now pick a size:
 img_size = ask(question, int, 1, 5)
 
 # Extract the data from constants into a useable form
-CHARS = gen_ascii.get_char_set(
-    constants.CHAR_DARKNESS_TEXT_ONLY, constants.MAX_VAL
-)
-more = gen_ascii.get_char_set(
-    constants.CHAR_DARKNESS_NON_TEXT, constants.MAX_VAL
-)
-i = 0
-for smaller_list in CHARS:
-    for character in more[i]:
-        if character not in smaller_list:
-            CHARS[i].append(character)
-    i += 1
+if "n" not in art_type:
+    CHARS = gen_ascii.get_char_set(
+        constants.CHAR_DARKNESS_TEXT_ONLY, constants.MAX_VAL
+    )
+    more = gen_ascii.get_char_set(
+        constants.CHAR_DARKNESS_NON_TEXT, constants.MAX_VAL
+    )
+    i = 0
+    for smaller_list in CHARS:
+        for character in more[i]:
+            if character not in smaller_list:
+                CHARS[i].append(character)
+        i += 1
+else:
+    CHARS = gen_ascii.get_char_set(
+        constants.CHAR_DARKNESS_NON_TEXT, constants.MAX_VAL
+    )
 
 # i = 0
 # for item in CHARS:
