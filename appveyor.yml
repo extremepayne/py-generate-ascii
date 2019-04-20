@@ -1,0 +1,20 @@
+environment:
+  matrix:
+    - PYTHON: "C:\\Python36"
+      PYTHON_VERSION: "3.6.x"
+      PYTHON_ARCH: "32"
+
+    - PYTHON: "C:\\Python37"
+      PYTHON_VERSION: "3.7.x"
+      PYTHON_ARCH: "32"
+init:
+  - "ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%"
+install:
+  - "%PYTHON%/Scripts/pip.exe install pillow"
+  - "%PYTHON%/Scripts/pip.exe install coverage"
+  - "%PYTHON%/Scripts/pip.exe install codecov"
+script:
+  - "%CMD_IN_ENV% python main.py < tests/test-main.txt"
+  - "%CMD_IN_ENV% coverage run test_gen_ascii.py"
+on_success:
+  - "%CMD_IN_ENV% codecov"
