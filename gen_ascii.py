@@ -50,13 +50,21 @@ def get_char_set(char_dict, max_val):
     return char_set
 
 
-def create_ascii(image, char_set, mode, size, scale):
+def create_ascii(
+    image, char_set, mode, size, pix_per_char_max, pix_per_char_min
+):
     """
     Make an image into ascii art.
+
     Input: image (must be PIL Image object)
     Output: ascii (2-D list)
     """
     import statistics
+
+    # Find the scalar variable used to convert from rgb to courier
+    letter_scale = pix_per_char_max - pix_per_char_min + 1
+    gray_scale = 255 - 1 + 1
+    scale = gray_scale / letter_scale
 
     output_list = [
         [" "] * (image.size[0] // (3 * size))

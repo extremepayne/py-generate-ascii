@@ -15,9 +15,7 @@ for smaller_list in CHARS:
         if character not in smaller_list:
             CHARS[i].append(character)
     i += 1
-LETTER_SCALE = constants.MAX_VAL - constants.MIN_VAL + 1
-GRAY_SCALE = 255 - 1 + 1
-SCALE = GRAY_SCALE / LETTER_SCALE
+
 
 assert gen_ascii.generate_char(0, "r", CHARS) == " "
 assert gen_ascii.generate_char(21, "r", CHARS) in (
@@ -41,5 +39,13 @@ if my_os == "Windows":
 else:
     img = Image.open("images/python.jpg")
     img2 = Image.open("images/python.png")
-print(gen_ascii.create_ascii(img, CHARS, "l", 4, SCALE))
-print(gen_ascii.create_ascii(img2, CHARS, "l", 3, SCALE))
+print(
+    gen_ascii.create_ascii(
+        img, CHARS, "l", 4, constants.MAX_VAL, constants.MIN_VAL
+    )
+)
+print(
+    gen_ascii.create_ascii(
+        img2, CHARS, "l", 3, constants.MAX_VAL, constants.MIN_VAL
+    )
+)

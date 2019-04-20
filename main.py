@@ -78,20 +78,19 @@ Now pick a size:
 """
 img_size = ask(question, int, 1, 5)
 
-# Find the scalar variable used to convert from rgb to courier
-LETTER_SCALE = constants.MAX_VAL - constants.MIN_VAL + 1
-GRAY_SCALE = 255 - 1 + 1
-SCALE = GRAY_SCALE / LETTER_SCALE
-
 # Extract the data from constants into a useable form
-CHARS = []
-for i in range(constants.MAX_VAL + 1):
-    CHARS.append([])
-if "n" not in art_type:
-    for letter, thickness in constants.CHAR_DARKNESS_TEXT_ONLY.items():
-        CHARS[thickness].append(letter)
-for letter, thickness in constants.CHAR_DARKNESS_NON_TEXT.items():
-    CHARS[thickness].append(letter)
+CHARS = gen_ascii.get_char_set(
+    constants.CHAR_DARKNESS_TEXT_ONLY, constants.MAX_VAL
+)
+more = gen_ascii.get_char_set(
+    constants.CHAR_DARKNESS_NON_TEXT, constants.MAX_VAL
+)
+i = 0
+for smaller_list in CHARS:
+    for character in more[i]:
+        if character not in smaller_list:
+            CHARS[i].append(character)
+    i += 1
 
 # i = 0
 # for item in CHARS:
@@ -109,7 +108,9 @@ if user_input == "demo":
         img = Image.open("images/python.jpg")
     # Print out some semi-useful info
     print(img.format, img.size)
-    output = gen_ascii.create_ascii(img, CHARS, art_type, img_size, SCALE)
+    output = gen_ascii.create_ascii(
+        img, CHARS, art_type, img_size, constants.MAX_VAL, constants.MIN_VAL
+    )
 
     # Print the output
     print("\n".join(map("".join, output)))
@@ -128,40 +129,21 @@ elif (".png" in user_input) or (".jpg" in user_input):
         img = Image.open(user_input)
         # Print out some semi-useful info
         print(img.format, img.size)
-        # Generate a 2-d list to hold output
-        output_list = [
-            [" "] * (img.size[0] // (3 * img_size))
-            for _ in range((img.size[1] // (5 * img_size)))
-        ]
-        # Loop through the image by pixels
-        for row in range(img.size[1] // (5 * img_size)):
-            for col in range(img.size[0] // (3 * img_size)):
-                # grab the color of the current pixel
-                color = img.getpixel(
-                    (col * (3 * img_size), row * (5 * img_size))
-                )
-                gray = statistics.mean((color[0], color[1], color[2]))
-                if img.format == "JPEG":
-                    darkness = round((255 - gray) / SCALE) + 1
-                    character = gen_ascii.generate_char(
-                        darkness, art_type, CHARS
-                    )
-                    output_list[row][col] = character
-                else:
-                    if color[3] > 0:  # If the pixel isn't transparent:
-                        darkness = round((255 - color[0]) / SCALE) + 1
-                        character = gen_ascii.generate_char(
-                            darkness, art_type, CHARS
-                        )
-                        output_list[row][col] = character
-
+        output = gen_ascii.create_ascii(
+            img,
+            CHARS,
+            art_type,
+            img_size,
+            constants.MAX_VAL,
+            constants.MIN_VAL,
+        )
         # Print the output
-        print("\n".join(map("".join, output_list)))
+        print("\n".join(map("".join, output)))
         print("You must view this in courier for the image to work.")
         # And save it to a file
         file = open("output.txt", "w")
 
-        file.write("\n".join(map("".join, output_list)))
+        file.write("\n".join(map("".join, output)))
 
         file.close()
         print("The output has been saved to output.txt")
