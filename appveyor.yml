@@ -13,7 +13,7 @@ install:
   - "%PYTHON%/Scripts/pip.exe install pillow"
   - "%PYTHON%/Scripts/pip.exe install coverage"
   - "%PYTHON%/Scripts/pip.exe install codecov"
-script:
+build_script:
   - "%CMD_IN_ENV% python main.py < tests/test-main.txt"
   - "%CMD_IN_ENV% coverage run test_gen_ascii.py"
 on_success:
