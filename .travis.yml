@@ -1,17 +1,33 @@
-dist: xenial
 language: python
-python:
- - "3.6"
- - "3.7"
- - "nightly"
 notifications:
   email: false
+matrix:
+  include:
+    - name: "Python 3.6.x on Xenial Linux"
+      python: 3.6
+      dist: xenial
+    - name: "Python 3.7.x on Xenial Linux"
+      python: 3.7
+      dist: xenial
+    - name: "Python nightly on Xenial Linux"
+      python: "nightly"
+      dist: xenial
+    - name: "Python 3.7.x on macOS"
+      os: osx
+      osx_image: xcode10.2
+      language: shell
+    - name: "Python 3.7.x on Windows"
+      os : windows
+      language: shell
+      before_install: choco install python
+      env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
 install:
-  - pip install codecov
-  - pip install coverage
-  - pip install pillow
+  - pip3 install --upgrade pip
+  - pip3 install codecov
+  - pip3 install coverage
+  - pip3 install pillow
 script:
-  - python main.py < tests/test-main.txt
+  - python3 main.py < tests/test-main.txt || python main.py < tests/test-main.txt
   - coverage run test_gen_ascii.py
 after_success:
   - codecov
