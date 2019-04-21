@@ -121,14 +121,13 @@ if user_input == "demo":
     # Adjust path based on OS
     my_os = platform.system()
     if my_os == "Windows":
-        img = Image.open("images\python.jpg")
+        img = Image.open("images\\python.jpg")
     else:
         img = Image.open("images/python.jpg")
     # Print out some semi-useful info
     print(img.format, img.size)
-    output = gen_ascii.create_ascii(
-        img, CHARS, art_type, img_size, constants.MAX_VAL, constants.MIN_VAL
-    )
+    SCALE = gen_ascii.detirmine_scale(constants.MAX_VAL, constants.MIN_VAL)
+    output = gen_ascii.create_ascii(img, CHARS, art_type, img_size, SCALE)
 
     # Print the output
     display_and_save_output(output)
@@ -139,14 +138,8 @@ elif (".png" in user_input) or (".jpg" in user_input):
         img = Image.open(user_input)
         # Print out some semi-useful info
         print(img.format, img.size)
-        output = gen_ascii.create_ascii(
-            img,
-            CHARS,
-            art_type,
-            img_size,
-            constants.MAX_VAL,
-            constants.MIN_VAL,
-        )
+        SCALE = gen_ascii.detirmine_scale(constants.MAX_VAL, constants.MIN_VAL)
+        output = gen_ascii.create_ascii(img, CHARS, art_type, img_size, SCALE)
         # Print the output
         display_and_save_output(output)
 
@@ -154,17 +147,12 @@ elif ".gif" in user_input:
     if os.path.exists(user_input):
         img = Image.open(user_input)
         # Print out some semi-useful info
-        print(img.format, img.size)
-        output = gen_ascii.create_ascii(
-            img,
-            CHARS,
-            art_type,
-            img_size,
-            constants.MAX_VAL,
-            constants.MIN_VAL,
+        SCALE = gen_ascii.detirmine_scale(constants.MAX_VAL, constants.MIN_VAL)
+        output = gen_ascii.create_ascii_gif(
+            img, CHARS, art_type, img_size, SCALE
         )
-        # Print the output
-        display_and_save_output(output)
+        # Print the outputimages
+        # display_and_save_output(output)
 else:
     print("File must be a png or jpeg.\n\n\n")
 
