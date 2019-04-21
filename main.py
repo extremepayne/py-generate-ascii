@@ -149,6 +149,22 @@ elif (".png" in user_input) or (".jpg" in user_input):
         )
         # Print the output
         display_and_save_output(output)
+
+elif ".gif" in user_input:
+    if os.path.exists(user_input):
+        img = Image.open(user_input)
+        # Print out some semi-useful info
+        print(img.format, img.size)
+        output = gen_ascii.create_ascii(
+            img,
+            CHARS,
+            art_type,
+            img_size,
+            constants.MAX_VAL,
+            constants.MIN_VAL,
+        )
+        # Print the output
+        display_and_save_output(output)
 else:
     print("File must be a png or jpeg.\n\n\n")
 
