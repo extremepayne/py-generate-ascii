@@ -39,13 +39,11 @@ if my_os == "Windows":
 else:
     img = Image.open("images/python.jpg")
     img2 = Image.open("images/python.png")
-print(
+
     gen_ascii.create_ascii(
         img, CHARS, "l", 4, constants.MAX_VAL, constants.MIN_VAL
     )
-)
-print(
+
     gen_ascii.create_ascii(
         img2, CHARS, "l", 3, constants.MAX_VAL, constants.MIN_VAL
     )
-)

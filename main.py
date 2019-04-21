@@ -56,6 +56,20 @@ def ask(prompt, type_=None, min_=None, max_=None, range_=None):
             return ui
 
 
+def display_and_save_output(to_output):
+    """Displays the 2-D list and prints output."""
+    # Print the output
+    print("\n".join(map("".join, to_output)))
+    print("You must view this in courier for the image to work.")
+    # And save it to a file
+    file = open("output.txt", "w")
+
+    file.write("\n".join(map("".join, to_output)))
+
+    file.close()
+    print("The output has been saved to output.txt")
+
+
 # User inputs the path for the file:
 user_input = input(
     'Enter the path of your file\n\
@@ -117,15 +131,7 @@ if user_input == "demo":
     )
 
     # Print the output
-    print("\n".join(map("".join, output)))
-    print("You must view this in courier for the image to work.")
-    # And save it to a file
-    file = open("output.txt", "w")
-
-    file.write("\n".join(map("".join, output)))
-
-    file.close()
-    print("The output has been saved to output.txt")
+    display_and_save_output(output)
 
 
 elif (".png" in user_input) or (".jpg" in user_input):
@@ -142,18 +148,7 @@ elif (".png" in user_input) or (".jpg" in user_input):
             constants.MIN_VAL,
         )
         # Print the output
-        print("\n".join(map("".join, output)))
-        print("You must view this in courier for the image to work.")
-        # And save it to a file
-        file = open("output.txt", "w")
-
-        file.write("\n".join(map("".join, output)))
-
-        file.close()
-        print("The output has been saved to output.txt")
-    else:
-        print("That path does not exist.")
-
+        display_and_save_output(output)
 else:
     print("File must be a png or jpeg.\n\n\n")
 
