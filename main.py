@@ -152,7 +152,9 @@ elif ".gif" in user_input:
             img, CHARS, art_type, img_size, SCALE
         )
         # Print the outputimages
-        # display_and_save_output(output)
+        # Print the output
+        print("\n".join(map("".join, output[0])))
+        print("You must view this in courier for the image to work.")
 else:
     print("File must be a png or jpeg.\n\n\n")
 

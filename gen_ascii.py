@@ -108,12 +108,31 @@ def create_ascii_gif(image, char_set, mode, size, scale):
     pix_per_char_min (int)
     Output: ascii (2-D list)
     """
-    output_list = []
-    for _ in range(2):
-        output_list.append(
-            [" "] * (image.size[0] // (3 * size))
-            for _ in range((image.size[1] // (5 * size)))
-        )
+    import statistics
 
-    print(output_list)
+    while True:
+        try:
+            image.seek(image.tell() + 1)
+        except EOFError:
+            break
+        else:
+            frame = image.tell()
+    print(frame)
+    frame = frame // 10
+    output_list = [
+        [
+            [" " for k in range(image.size[0] // (3 * size))]
+            for j in range(image.size[1] // (5 * size))
+        ]
+        for i in range(frame)
+    ]
+    for row in range(image.size[1] // (5 * size)):
+        for col in range(image.size[0] // (3 * size)):
+            rgb_image = image.convert("RGB")
+            color = rgb_image.getpixel((col * (3 * size), row * (5 * size)))
+            gray = statistics.mean((color[0], color[1], color[2]))
+            darkness = round((255 - gray) / scale) + 1
+            character = generate_char(darkness, mode, char_set)
+            output_list[row][col] = character
+    # print(output_list)
     return output_list
