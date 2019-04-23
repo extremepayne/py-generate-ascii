@@ -136,4 +136,4 @@ def create_ascii_gif(image, char_set, mode, size, scale):
                 character = generate_char(darkness, mode, char_set)
                 output_list[0][row][col] = character
     # print(output_list)
-    return output_list
+    return output_list, frames
