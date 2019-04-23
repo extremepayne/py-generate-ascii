@@ -16,7 +16,7 @@ for smaller_list in CHARS:
             CHARS[i].append(character)
     i += 1
 
-SCALE = gen_ascii.detirmine_scale(conatants.MAX_VAL, constants.MIN_VAL)
+SCALE = gen_ascii.detirmine_scale(constants.MAX_VAL, constants.MIN_VAL)
 
 assert gen_ascii.generate_char(0, "r", CHARS) == " "
 assert gen_ascii.generate_char(21, "r", CHARS) in (
