@@ -133,6 +133,6 @@ def create_ascii_gif(image, char_set, mode, size, scale):
             gray = statistics.mean((color[0], color[1], color[2]))
             darkness = round((255 - gray) / scale) + 1
             character = generate_char(darkness, mode, char_set)
-            output_list[row][col] = character
+            output_list[0][row][col] = character
     # print(output_list)
     return output_list
