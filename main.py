@@ -148,12 +148,17 @@ elif ".gif" in user_input:
         img = Image.open(user_input)
         # Print out some semi-useful info
         SCALE = gen_ascii.detirmine_scale(constants.MAX_VAL, constants.MIN_VAL)
-        output = gen_ascii.create_ascii_gif(
+        output, num_frames = gen_ascii.create_ascii_gif(
             img, CHARS, art_type, img_size, SCALE
         )
         # Print the outputimages
         # Print the output
-        print("\n".join(map("".join, output[0])))
+        for i in range(3):
+            for j in range(num_frames):
+                to_p = "\n".join(map("".join, output[j])) + "\r"
+                sys.stdout.write(to_p)
+                sys.stdout.flush()
+                time.sleep(0.3)
         print("You must view this in courier for the image to work.")
 else:
     print("File must be a png or jpeg.\n\n\n")
