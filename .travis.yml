@@ -6,26 +6,45 @@ matrix:
     - name: "Python 3.6.x on Xenial Linux"
       python: 3.6
       dist: xenial
+      install: 
+        - pip3 install --upgrade pip
+        - pip3 install codecov
+        - pip3 install coverage
+        - pip3 install pillow
     - name: "Python 3.7.x on Xenial Linux"
       python: 3.7
       dist: xenial
+      install: 
+        - pip3 install --upgrade pip
+        - pip3 install codecov
+        - pip3 install coverage
+        - pip3 install pillow
     - name: "Python nightly on Xenial Linux"
       python: "nightly"
       dist: xenial
+      install: 
+        - pip3 install --upgrade pip
+        - pip3 install codecov
+        - pip3 install coverage
+        - pip3 install pillow
     - name: "Python 3.7.x on macOS"
       os: osx
       osx_image: xcode10.2
       language: shell
+      install: 
+        - pip3 install --upgrade pip
+        - pip3 install codecov
+        - pip3 install coverage
+        - pip3 install pillow
     - name: "Python 3.7.x on Windows"
       os : windows
       language: shell
       before_install: choco install python
+      install:
+        - pip3 install codecov
+        - pip3 install coverage
+        - pip3 install pillow
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
-install:
-  - pip3 install --upgrade pip
-  - pip3 install codecov
-  - pip3 install coverage
-  - pip3 install pillow
 script:
   - python3 main.py < tests/test-main.txt || python main.py < tests/test-main.txt
   - coverage run test_gen_ascii.py
