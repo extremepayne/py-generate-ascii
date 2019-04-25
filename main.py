@@ -4,9 +4,19 @@
 # Imports
 import os
 import platform
+import sys
+import time
 import constants  # Local; has some variable I didn't want cluttering this file
 import gen_ascii
 
+# Reprint used to display gifs
+try:
+    import reprint
+except ImportError:
+    print("You need to install reprint for this project to work.")
+    print("Do this in you command line: `pip install reprint`")
+    input("Press enter to continue")
+    quit()
 # PIL used to process images
 try:
     from PIL import Image
@@ -153,12 +163,15 @@ elif ".gif" in user_input:
         )
         # Print the outputimages
         # Print the output
-        for i in range(3):
-            for j in range(num_frames):
-                to_p = "\n".join(map("".join, output[j])) + "\r"
-                sys.stdout.write(to_p)
-                sys.stdout.flush()
-                time.sleep(0.3)
+        with reprint.output(
+            output_type="list", initial_len=5, interval=0
+        ) as output_list:
+            for i in range(len(output)):
+                output_list = output[i]
+        # for i in range(num_frames):
+        #    to_p = "\n".join(map("".join, output[i])) + "\r"
+        #    print(to_p, flush=True)
+        #    time.sleep(0.3)
         print("You must view this in courier for the image to work.")
 else:
     print("File must be a png or jpeg.\n\n\n")

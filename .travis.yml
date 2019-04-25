@@ -26,6 +26,7 @@ install:
   - pip3 install codecov
   - pip3 install coverage
   - pip3 install pillow
+  - pip3 install reprint
 script:
   - python3 main.py < tests/test-main.txt || python main.py < tests/test-main.txt
   - coverage run test_gen_ascii.py
