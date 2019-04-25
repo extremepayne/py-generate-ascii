@@ -16,6 +16,7 @@ for smaller_list in CHARS:
             CHARS[i].append(character)
     i += 1
 
+SCALE = gen_ascii.calc_scale(constants.MIN_VAL, constants.MAX_VAL)
 
 assert gen_ascii.generate_char(0, "r", CHARS) == " "
 assert gen_ascii.generate_char(21, "r", CHARS) in (
@@ -40,10 +41,10 @@ else:
     img = Image.open("images/python.jpg")
     img2 = Image.open("images/python.png")
 
-    gen_ascii.create_ascii(
-        img, CHARS, "l", 4, constants.MAX_VAL, constants.MIN_VAL
-    )
+gen_ascii.create_ascii(
+    img, CHARS, "l", 4, SCALE
+)
 
-    gen_ascii.create_ascii(
-        img2, CHARS, "l", 3, constants.MAX_VAL, constants.MIN_VAL
-    )
+gen_ascii.create_ascii(
+    img2, CHARS, "l", 3, SCALE
+)
