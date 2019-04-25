@@ -110,6 +110,8 @@ else:
         constants.CHAR_DARKNESS_NON_TEXT, constants.MAX_VAL
     )
 
+SCALE = gen_ascii.calc_scale(constants.MAX_VAL, constants.MIN_VAL)
+    
 # i = 0
 # for item in CHARS:
 #    if len(item) == 0:
@@ -127,7 +129,7 @@ if user_input == "demo":
     # Print out some semi-useful info
     print(img.format, img.size)
     output = gen_ascii.create_ascii(
-        img, CHARS, art_type, img_size, constants.MAX_VAL, constants.MIN_VAL
+        img, CHARS, art_type, img_size, SCALE
     )
 
     # Print the output
@@ -144,8 +146,7 @@ elif (".png" in user_input) or (".jpg" in user_input):
             CHARS,
             art_type,
             img_size,
-            constants.MAX_VAL,
-            constants.MIN_VAL,
+            SCALE
         )
         # Print the output
         display_and_save_output(output)
