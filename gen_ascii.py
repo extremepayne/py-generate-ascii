@@ -129,9 +129,11 @@ def create_ascii_gif(image, char_set, mode, size, scale):
     for frame in range(frames):
         for row in range(image.size[1] // (5 * size)):
             for col in range(image.size[0] // (3 * size)):
-                img.seek(frame * 10)
+                image.seek(frame * 10)
                 rgb_image = image.convert("RGB")
-                color = rgb_image.getpixel((col * (3 * size), row * (5 * size)))
+                color = rgb_image.getpixel(
+                    (col * (3 * size), row * (5 * size))
+                )
                 gray = statistics.mean((color[0], color[1], color[2]))
                 darkness = round((255 - gray) / scale) + 1
                 character = generate_char(darkness, mode, char_set)

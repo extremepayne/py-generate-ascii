@@ -4,6 +4,8 @@
 # Imports
 import os
 import platform
+import sys
+import time
 import constants  # Local; has some variable I didn't want cluttering this file
 import gen_ascii
 
