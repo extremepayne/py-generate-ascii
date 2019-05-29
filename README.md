@@ -16,7 +16,7 @@ This repo is a tool to transform an image into ASCII art. Follow these steps to 
 
 ## Requirements
 To use this, you must have:
-Python [3.6.x](https://www.python.org/downloads/release/python-368/) or Python [3.7.x](https://www.python.org/downloads/release/python-373/) installed. Python 3.5 used to be supported, but I broke the support and can't figure out how to fix it.
+Python [3.6.x](https://www.python.org/downloads/release/python-368/) or Python [3.7.x](https://www.python.org/downloads/release/python-373/) installed.
 
 ## Sample output
 This image is included as a demo.
