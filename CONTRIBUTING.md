@@ -19,8 +19,8 @@ Some PRs I would love to see:
 ### Suggestions
 To increase the chances of your PR being accepted, follow these suggestions:
 
-    - Lint with pylint, pycodestyle, and pydocstyle.
-    - Use windows (CR LF) line endings.
+- Lint with pylint, pycodestyle, and pydocstyle.
+- Use windows (CR LF) line endings.
 
 ### Requirements
 Your PR will not be accepted if it does not follow these requirements:
